@@ -22,13 +22,14 @@ public:
     void setTag(const std::string &tag);
     const std::string &getDescription() const;
     void setDescription(const std::string &description);
+    void addEntry(tm startTime, tm endTime);
 
 protected:
     std::string name;
     Colors color;
     std::string tag;
     std::string description;
-    std::vector<Activity> Activities;
+    std::vector<Activity> activities;
 
 };
 

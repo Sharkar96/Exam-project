@@ -35,3 +35,8 @@ const std::string &ActivityBluePrint::getDescription() const {
 void ActivityBluePrint::setDescription(const std::string &description) {
     ActivityBluePrint::description = description;
 }
+
+void ActivityBluePrint::addEntry(tm startTime, tm endTime) {
+    Activity
+    activities.push_back();
+}
