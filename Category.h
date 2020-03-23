@@ -14,7 +14,7 @@ class Category {
 private:
     std::string name;
     //TODO add symbol
-    std::list<ActivityBluePrint*> Activities;
+    std::list<ActivityBluePrint*> ActivityTypes;
 
 };
 
