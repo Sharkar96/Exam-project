@@ -13,6 +13,8 @@
 
 class ActivityBluePrint {
 public:
+    ActivityBluePrint(std::string n, Colors c, std::string t, std::string d) : name{n}, color{c}, tag{t},
+                                                                               description{d} {};
 
     const std::string &getName() const;
     void setName(const std::string &name);
@@ -22,12 +24,16 @@ public:
     void setTag(const std::string &tag);
     const std::string &getDescription() const;
     void setDescription(const std::string &description);
+
     void addEntry(tm startTime, tm endTime);
 
+    void printVector();
+
+
 protected:
-    std::string name;
+    std::string name{"default"};
     Colors color;
-    std::string tag;
+    std::string tag; // productivity, waste of time, school related etc.
     std::string description;
     std::vector<Activity> activities;
 

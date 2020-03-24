@@ -7,5 +7,7 @@
 struct Activity {
     tm startTime;
     tm endTime;
+
+    Activity(tm start, tm end) : startTime{start}, endTime{end} {};
 };
 #endif //EXAM_PROJECT_ACTIVITY_H

@@ -37,6 +37,13 @@ void ActivityBluePrint::setDescription(const std::string &description) {
 }
 
 void ActivityBluePrint::addEntry(tm startTime, tm endTime) {
-    Activity
-    activities.push_back();
+    activities.emplace_back(Activity(startTime, endTime));
+}
+
+void ActivityBluePrint::printVector() {
+    for(auto i:activities) {
+        std::cout << i.startTime.tm_hour << ":" << i.startTime.tm_min << std::endl;
+        std::cout << i.endTime.tm_hour << ":" << i.endTime.tm_min << std::endl;
+    }
+
 }
