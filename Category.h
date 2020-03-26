@@ -10,6 +10,15 @@
 #include <list>
 
 class Category {
+public:
+
+    const std::string &getName() const {
+        return name;
+    }
+
+    void setName(const std::string &name) {
+        Category::name = name;
+    }
 
 private:
     std::string name;

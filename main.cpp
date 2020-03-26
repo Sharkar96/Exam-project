@@ -1,7 +1,13 @@
 #include <iostream>
 #include <ctime>
+#include <QApplication>
 #include "ActivityBluePrint.h"
 #include "Colors.h"
+
+
+// Registro di attività che memorizza cosa si è fatto durante una giornata. Classe che rappresenta attività con descrizione,
+// tempo inizio e fine, Classe registro che colleziona attività su base del giorno.
+// Interfaccia semplice per mostrare il registro sulla base di un giorno
 
 int main() {
     Colors c(0, 0, 0);
