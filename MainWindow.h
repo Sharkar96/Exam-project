@@ -11,6 +11,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
+
 class MainWindow : public QMainWindow {
 Q_OBJECT
 
@@ -20,6 +21,11 @@ public:
 
 private:
     Ui::MainWindow* ui;
+
+
+private slots:
+    void on_actionAdd_Category_triggered();
+
 };
 
 #endif //EXAM_PROJECT_MAINWINDOW_H
