@@ -3,3 +3,9 @@
 //
 
 #include "Category.h"
+
+void Category::print() {
+    std::cout << name
+              << std::endl;
+
+}

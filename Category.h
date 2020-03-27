@@ -8,9 +8,11 @@
 #include "ActivityBluePrint.h"
 #include <iostream>
 #include <list>
+#include <utility>
 
 class Category {
 public:
+    explicit Category(std::string n) : name{n} {};
 
     const std::string &getName() const {
         return name;
@@ -20,10 +22,13 @@ public:
         Category::name = name;
     }
 
+    void print();
+
 private:
     std::string name;
     //TODO add symbol
     std::list<ActivityBluePrint*> ActivityTypes;
+
 
 };
 

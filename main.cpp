@@ -1,9 +1,8 @@
 #include <iostream>
-#include <ctime>
 #include <QApplication>
 #include "ActivityBluePrint.h"
 #include "Colors.h"
-#include "MainWindow.h"
+
 
 // Registro di attività che memorizza cosa si è fatto durante una giornata. Classe che rappresenta attività con descrizione,
 // tempo inizio e fine, Classe registro che colleziona attività su base del giorno.
@@ -23,8 +22,4 @@ int main(int argc, char* argv[]) {
 
     math.printVector();
 
-    QApplication app(argc, argv);
-    MainWindow w;
-    w.show();
-    return app.exec();
 }
