@@ -10,7 +10,7 @@ set(CMAKE_AUTOMOC ON)
 find_package(Qt5Widgets REQUIRED)
 
 add_executable(Exam_project main.cpp Category.cpp Category.h ActivityBluePrint.cpp ActivityBluePrint.h Colors.h Colors.cpp
-        Activity.h)
+        Activity.h MainWindow.h ViewMain.cpp ViewMain.h CategoryAdder.h CategoryAdderController.cpp CategoryAdderController.h)
 
 # Use the Widgets module from Qt 5.
 target_link_libraries(Exam_project Qt5::Widgets)
