@@ -9,13 +9,16 @@
 #include <QMainWindow>
 #include "MainWindow.h"
 #include <iostream>
+#include "CategoryView.h"
 
 class ViewMain : public QMainWindow {
 Q_OBJECT
 public:
     explicit ViewMain(QWidget* parent = nullptr);
 
+    void emerge();
     virtual ~ViewMain();
+
 private:
     Ui_MainWindow* ui;
 private slots:

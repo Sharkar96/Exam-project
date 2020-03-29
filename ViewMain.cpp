@@ -13,5 +13,13 @@ ViewMain::~ViewMain() {
 }
 
 void ViewMain::createAdder() {
-    std::cout << "CULO";
+
+    CategoryView window(this, nullptr);
+    this->setVisible(false);
+    window.exec();
+
+}
+
+void ViewMain::emerge() {
+    this->setVisible(true);
 }

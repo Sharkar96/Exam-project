@@ -54,6 +54,7 @@ public:
 
 
         retranslateUi(Dialog);
+        QObject::connect(addCategory, SIGNAL(clicked()), Dialog, SLOT(onAddCategory()));
 
         QMetaObject::connectSlotsByName(Dialog);
     } // setupUi

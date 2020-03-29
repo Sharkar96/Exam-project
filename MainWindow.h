@@ -51,6 +51,7 @@ public:
         retranslateUi(MainWindow);
         QObject::connect(addCategory, SIGNAL(clicked()), MainWindow, SLOT(createAdder()));
 
+
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
 
