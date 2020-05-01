@@ -8,11 +8,7 @@
 class Colors {
 
 public:
-    explicit Colors(short unsigned int r, short unsigned int g, short unsigned int b) {
-        if(outOfRange(r)) this->r = r;
-        if(outOfRange(g)) this->g = g;
-        if(outOfRange(b)) this->b = b;
-    };
+    explicit Colors(unsigned char r = 0, unsigned char g = 0, unsigned char b = 0) : R{r}, G{g}, B{b} {};
 
     unsigned short getR() const;
     void setR(unsigned short r);
@@ -22,10 +18,9 @@ public:
     void setB(unsigned short b);
 
 private:
-    bool outOfRange(short unsigned int value); //check if colors are 0, 255
-    short unsigned int r;
-    short unsigned int g;
-    short unsigned int b;
+    unsigned char R;
+    unsigned char G;
+    unsigned char B;
 };
 
 #endif //EXAM_PROJECT_COLORS_H

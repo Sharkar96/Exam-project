@@ -2,72 +2,29 @@
 // Created by Andrea on 3/28/2020.
 //
 
+#ifndef EXAM_PROJECT_MAINWINDOW_H
+#define EXAM_PROJECT_MAINWINDOW_H
 
-/********************************************************************************
-** Form generated from reading UI file 'MainWindowzLbYod.ui'
-**
-** Created by: Qt User Interface Compiler version 5.14.1
-**
-** WARNING! All changes made in this file will be lost when recompiling UI file!
-********************************************************************************/
 
-#ifndef MAINWINDOWZLBYOD_H
-#define MAINWINDOWZLBYOD_H
+#include <QMainWindow>
+#include "Ui_MainWindow.h"
+#include <iostream>
+#include "CategoryAdderView.h"
+#include "Category.h"
 
-#include <QtCore/QVariant>
-#include <QtWidgets/QApplication>
-#include <QtWidgets/QGroupBox>
-#include <QtWidgets/QMainWindow>
-#include <QtWidgets/QPushButton>
-#include <QtWidgets/QStatusBar>
-#include <QtWidgets/QWidget>
-
-QT_BEGIN_NAMESPACE
-
-class Ui_MainWindow {
+class MainWindow : public QMainWindow {
+Q_OBJECT
 public:
-    QWidget* centralwidget;
-    QGroupBox* CategoryBox;
-    QPushButton* addCategory;
-    QStatusBar* statusbar;
+    explicit MainWindow(QWidget* parent = nullptr);
+    virtual ~MainWindow();
 
-    void setupUi(QMainWindow* MainWindow) {
-        if(MainWindow->objectName().isEmpty())
-            MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(749, 600);
-        centralwidget = new QWidget(MainWindow);
-        centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        CategoryBox = new QGroupBox(centralwidget);
-        CategoryBox->setObjectName(QString::fromUtf8("CategoryBox"));
-        CategoryBox->setGeometry(QRect(20, 40, 201, 411));
-        addCategory = new QPushButton(CategoryBox);
-        addCategory->setObjectName(QString::fromUtf8("addCategory"));
-        addCategory->setGeometry(QRect(170, 10, 21, 21));
-        MainWindow->setCentralWidget(centralwidget);
-        statusbar = new QStatusBar(MainWindow);
-        statusbar->setObjectName(QString::fromUtf8("statusbar"));
-        MainWindow->setStatusBar(statusbar);
-
-        retranslateUi(MainWindow);
-        QObject::connect(addCategory, SIGNAL(clicked()), MainWindow, SLOT(createAdder()));
-
-
-        QMetaObject::connectSlotsByName(MainWindow);
-    } // setupUi
-
-    void retranslateUi(QMainWindow* MainWindow) {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        CategoryBox->setTitle(QCoreApplication::translate("MainWindow", "Categories", nullptr));
-        addCategory->setText(QCoreApplication::translate("MainWindow", "+", nullptr));
-    } // retranslateUi
+    void createCategory(std::string name);
+private:
+    Ui_MainWindow* ui;
+    std::list<Category> catList;
+private slots:
+    void createAdder();
 
 };
 
-namespace Ui {
-    class MainWindow : public Ui_MainWindow {
-    };
-} // namespace Ui
-
-QT_END_NAMESPACE
-
-#endif // MAINWINDOWZLBYOD_H
+#endif //EXAM_PROJECT_MAINWINDOW_H

@@ -27,7 +27,7 @@ public:
 private:
     std::string name;
     //TODO add symbol
-    std::list<ActivityBluePrint*> ActivityTypes;
+    std::list<std::unique_ptr<ActivityBluePrint>> ActivityTypes;
 
 
 };

@@ -4,30 +4,26 @@
 
 #include "Colors.h"
 
-bool Colors::outOfRange(const short unsigned int value) {
-    return value <= 255;
-}
-
 unsigned short Colors::getR() const {
-    return r;
+    return R;
 }
 
 void Colors::setR(unsigned short r) {
-    Colors::r = r;
+    Colors::R = r;
 }
 
 unsigned short Colors::getG() const {
-    return g;
+    return G;
 }
 
 void Colors::setG(unsigned short g) {
-    Colors::g = g;
+    Colors::G = g;
 }
 
 unsigned short Colors::getB() const {
-    return b;
+    return B;
 }
 
 void Colors::setB(unsigned short b) {
-    Colors::b = b;
+    Colors::B = b;
 }

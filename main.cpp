@@ -1,6 +1,6 @@
 #include <QApplication>
-#include "CategoryView.h"
-#include "ViewMain.h"
+#include "CategoryAdderView.h"
+#include "MainWindow.h"
 
 
 // Registro di attività che memorizza cosa si è fatto durante una giornata. Classe che rappresenta attività con descrizione,
@@ -11,7 +11,7 @@ int main(int argc, char* argv[]) {
 
     QApplication app(argc, argv);
 
-    ViewMain window;
+    MainWindow window;
     window.show();
 
     return app.exec();
