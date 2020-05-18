@@ -37,13 +37,13 @@ void ActivityBluePrint::setDescription(const std::string &description) {
 }
 
 void ActivityBluePrint::addActivity(tm startTime, tm endTime) {
-    activities.emplace_back(Activity(startTime, endTime));
+    activities.emplace_back(std::make_unique<Activity>(startTime, endTime));
 }
 
 void ActivityBluePrint::printActivities() {
-    for(auto i:activities){
-        std::cout << i.startTime.tm_hour << ":" << i.startTime.tm_min << std::endl;
-        std::cout << i.endTime.tm_hour << ":" << i.endTime.tm_min << std::endl;
+    for(auto& i:activities){
+        std::cout << i->startTime.tm_hour << ":" << i->startTime.tm_min << std::endl;
+        std::cout << i->endTime.tm_hour << ":" << i->endTime.tm_min << std::endl;
     }
 
 }

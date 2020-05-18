@@ -12,6 +12,8 @@
 #include "CategoryAdderView.h"
 #include "Category.h"
 #include "Observer.h"
+#include "ControllerMain.h"
+#include "ModelMain.h"
 
 //Registro di attività che memorizza cosa si è fatto durante una giornata.
 //Classe che rappresenta attività con descrizione, tempo inizio e fine, Classe registro che colleziona attività su base del giorno.
@@ -19,13 +21,16 @@
 class MainWindow : public QMainWindow, public Observer {
 Q_OBJECT
 public:
-    explicit MainWindow(QWidget* parent = nullptr);
+    explicit MainWindow(ControllerMain* c, ModelMain* m, QWidget* parent = nullptr);
     virtual ~MainWindow();
 
     void createCategory(std::string name);
 private:
     Ui_MainWindow* ui;
+    ControllerMain* controller;
+    ModelMain* model;
     std::list<Category> catList;
+
 private slots:
     void createAdder();
 

@@ -6,8 +6,15 @@
 #define EXAM_PROJECT_CONTROLLERMAIN_H
 
 
-class ControllerMain {
+#include "ModelMain.h"
 
+class ControllerMain {
+public:
+    explicit ControllerMain(ModelMain* m) : model{m} {};
+
+
+private:
+    ModelMain* model;
 };
 
 

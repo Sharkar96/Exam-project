@@ -4,9 +4,10 @@
 
 #include "MainWindow.h"
 
-MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui_MainWindow()) {
+MainWindow::MainWindow(ControllerMain* c, ModelMain* m, QWidget* parent) : controller{c}, model{m}, QMainWindow(parent),
+                                                                           ui(new Ui_MainWindow()) {
     ui->setupUi(this);
-    QObject::connect(ui->addCategory, SIGNAL(clicked()), this, SLOT(createAdder()));
+    QObject::connect(ui->addCategory, &QPushButton::clicked, this, &MainWindow::createAdder);
 }
 
 MainWindow::~MainWindow() {
@@ -16,7 +17,7 @@ MainWindow::~MainWindow() {
 void MainWindow::createAdder() {
 
     CategoryAdderView window(this, nullptr);
-    this->setVisible(false);
+    this->hide();
     window.exec();
 
 }

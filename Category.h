@@ -12,13 +12,13 @@
 
 class Category {
 public:
-    explicit Category(std::string n) : name{n} {};
+    explicit Category(std::string n) : name{std::move(n)} {};
 
-    const std::string &getName() const {
+    const std::string& getName() const {
         return name;
     }
 
-    void setName(const std::string &name) {
+    void setName(const std::string& name) {
         Category::name = name;
     }
 

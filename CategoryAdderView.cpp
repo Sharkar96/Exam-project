@@ -9,7 +9,7 @@ CategoryAdderView::CategoryAdderView(QWidget* a, QWidget* parent) : main{a}, QDi
 }
 
 CategoryAdderView::~CategoryAdderView() {
-    main->setVisible(true);
+    main->show();
     delete ui;
 
 }

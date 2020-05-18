@@ -36,7 +36,7 @@ protected:
     Colors color;
     std::string tag; // productivity, waste of time, school related etc.
     std::string description;
-    std::vector<Activity> activities;
+    std::vector<std::unique_ptr<Activity>> activities;
 };
 
 
