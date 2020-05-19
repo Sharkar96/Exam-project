@@ -14,9 +14,10 @@ int main(int argc, char* argv[]) {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QApplication app(argc, argv);
 
-    ModelMain* model = new ModelMain;
-    ControllerMain* controller = new ControllerMain(model);
-    MainWindow mainWindow(model, controller);
+    auto* model = new ModelMain;
+    auto* controller = new ControllerMain(model);
+
+    MainWindow mainWindow(controller, model);
 
     mainWindow.show();
 

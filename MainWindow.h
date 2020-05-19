@@ -24,6 +24,9 @@ public:
     explicit MainWindow(ControllerMain* c, ModelMain* m, QWidget* parent = nullptr);
     virtual ~MainWindow();
 
+
+    void update() override;
+
     void createCategory(std::string name);
 private:
     Ui_MainWindow* ui;
@@ -32,7 +35,7 @@ private:
     std::list<Category> catList;
 
 private slots:
-    void createAdder();
+    void showCategoryAdder();
 
 };
 

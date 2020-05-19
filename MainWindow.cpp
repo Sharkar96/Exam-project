@@ -7,14 +7,14 @@
 MainWindow::MainWindow(ControllerMain* c, ModelMain* m, QWidget* parent) : controller{c}, model{m}, QMainWindow(parent),
                                                                            ui(new Ui_MainWindow()) {
     ui->setupUi(this);
-    QObject::connect(ui->addCategory, &QPushButton::clicked, this, &MainWindow::createAdder);
+    QObject::connect(ui->addCategoryButton, &QPushButton::clicked, this, &MainWindow::showCategoryAdder);
 }
 
 MainWindow::~MainWindow() {
     delete ui;
 }
 
-void MainWindow::createAdder() {
+void MainWindow::showCategoryAdder() {
 
     CategoryAdderView window(this, nullptr);
     this->hide();
@@ -24,5 +24,9 @@ void MainWindow::createAdder() {
 
 void MainWindow::createCategory(std::string name) {
     catList.emplace_back(name);
+}
+
+void MainWindow::update() {
+
 }
 
