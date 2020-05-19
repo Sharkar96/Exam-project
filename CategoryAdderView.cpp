@@ -16,5 +16,10 @@ CategoryAdderView::~CategoryAdderView() {
 }
 
 void CategoryAdderView::onAddCategory() {
+    try {
+        controller->addCategory(ui->LineEditCategory->text().toStdString());
 
+    } catch(std::out_of_range& e) { //string is null
+        // TODO add dialog for the user
+    }
 }

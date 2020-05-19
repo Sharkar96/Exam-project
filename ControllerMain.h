@@ -7,11 +7,13 @@
 
 
 #include "ModelMain.h"
+#include <string>
 
 class ControllerMain {
 public:
     explicit ControllerMain(ModelMain* m) : model{m} {};
 
+    void addCategory(const std::string& name);
 
 private:
     ModelMain* model;
