@@ -4,12 +4,13 @@
 
 #include "CategoryAdderView.h"
 
-CategoryAdderView::CategoryAdderView(QWidget* a, QWidget* parent) : main{a}, QDialog{parent}, ui{new Ui_Dialog()} {
+CategoryAdderView::CategoryAdderView(ControllerMain* c, QWidget* parent) : controller{c}, QDialog{parent},
+                                                                           ui{new Ui_Dialog()} {
     ui->setupUi(this);
 }
 
 CategoryAdderView::~CategoryAdderView() {
-    main->show();
+    qobject_cast<QWidget*>(parent())->hide();
     delete ui;
 
 }

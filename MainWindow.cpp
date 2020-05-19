@@ -6,17 +6,19 @@
 
 MainWindow::MainWindow(ControllerMain* c, ModelMain* m, QWidget* parent) : controller{c}, model{m}, QMainWindow(parent),
                                                                            ui(new Ui_MainWindow()) {
+    model->addObserver(this);
     ui->setupUi(this);
     QObject::connect(ui->addCategoryButton, &QPushButton::clicked, this, &MainWindow::showCategoryAdder);
 }
 
 MainWindow::~MainWindow() {
+    model->removeObserver(this);
     delete ui;
 }
 
 void MainWindow::showCategoryAdder() {
 
-    CategoryAdderView window(this, nullptr);
+    CategoryAdderView window(controller, this);
     this->hide();
     window.exec();
 
