@@ -16,3 +16,19 @@ void ModelMain::notify() {
     for(auto i: observers)
         i->update();
 }
+
+void ModelMain::addCategory(std::unique_ptr<Category>& c) {
+    categories.push_back(std::move(c));
+    notify();
+}
+
+void ModelMain::removeCategory(const std::string& name) {
+    categories.erase(getCategory(name));
+}
+
+std::list<std::unique_ptr<Category>>::iterator ModelMain::getCategory(const std::string& name) {
+    //suppose it exists
+    for(auto i = categories.begin(); i != categories.end(); i++)
+        if((*i)->getName() == name)
+            return i;
+}

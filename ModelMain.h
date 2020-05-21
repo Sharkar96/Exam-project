@@ -8,6 +8,7 @@
 
 #include <list>
 #include "Subject.h"
+#include "Category.h"
 
 class ModelMain : public Subject {
 public:
@@ -17,9 +18,14 @@ public:
     void removeObserver(Observer* ob) override;
     void notify() override;
 
+    void addCategory(std::unique_ptr<Category>& c);
+    void removeCategory(const std::string& name);
+    std::list<std::unique_ptr<Category>>::iterator getCategory(const std::string& name);
+    //^ suppose it exists
 
 private:
     std::list<Observer*> observers;
+    std::list<std::unique_ptr<Category>> categories;
 };
 
 
