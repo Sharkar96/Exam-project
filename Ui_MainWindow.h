@@ -1,20 +1,20 @@
 /********************************************************************************
-** Form generated from reading UI file 'MainWindowXkCKZq.ui'
+** Form generated from reading UI file 'MainWindowpJeKKB.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.14.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef MAINWINDOWXKCKZQ_H
-#define MAINWINDOWXKCKZQ_H
+#ifndef MAINWINDOWPJEKKB_H
+#define MAINWINDOWPJEKKB_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QListView>
+#include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
@@ -27,13 +27,13 @@ public:
     QWidget* centralwidget;
     QPushButton* addCategoryButton;
     QGroupBox* activityBox;
-    QListView* activityListView;
+    QListWidget* activityListWidget;
     QPushButton* addActivityButton;
     QPushButton* addEntryButton;
-    QWidget* widget;
+    QWidget* layoutWidget;
     QHBoxLayout* categoryLayout;
     QGroupBox* categoryBox;
-    QListView* categoryListView;
+    QListWidget* categoryListWidget;
     QFrame* line;
     QStatusBar* statusbar;
 
@@ -49,30 +49,30 @@ public:
         activityBox = new QGroupBox(centralwidget);
         activityBox->setObjectName(QString::fromUtf8("activityBox"));
         activityBox->setGeometry(QRect(130, 40, 131, 291));
-        activityListView = new QListView(activityBox);
-        activityListView->setObjectName(QString::fromUtf8("activityListView"));
-        activityListView->setGeometry(QRect(0, 20, 121, 261));
+        activityListWidget = new QListWidget(activityBox);
+        activityListWidget->setObjectName(QString::fromUtf8("activityListWidget"));
+        activityListWidget->setGeometry(QRect(0, 20, 121, 261));
         addActivityButton = new QPushButton(centralwidget);
         addActivityButton->setObjectName(QString::fromUtf8("addActivityButton"));
         addActivityButton->setGeometry(QRect(230, 10, 31, 31));
         addEntryButton = new QPushButton(centralwidget);
         addEntryButton->setObjectName(QString::fromUtf8("addEntryButton"));
         addEntryButton->setGeometry(QRect(140, 340, 112, 32));
-        widget = new QWidget(centralwidget);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(20, 40, 105, 291));
-        categoryLayout = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(centralwidget);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(20, 40, 105, 291));
+        categoryLayout = new QHBoxLayout(layoutWidget);
         categoryLayout->setObjectName(QString::fromUtf8("categoryLayout"));
         categoryLayout->setContentsMargins(0, 0, 0, 0);
-        categoryBox = new QGroupBox(widget);
+        categoryBox = new QGroupBox(layoutWidget);
         categoryBox->setObjectName(QString::fromUtf8("categoryBox"));
-        categoryListView = new QListView(categoryBox);
-        categoryListView->setObjectName(QString::fromUtf8("categoryListView"));
-        categoryListView->setGeometry(QRect(0, 20, 81, 261));
+        categoryListWidget = new QListWidget(categoryBox);
+        categoryListWidget->setObjectName(QString::fromUtf8("categoryListWidget"));
+        categoryListWidget->setGeometry(QRect(0, 20, 81, 261));
 
         categoryLayout->addWidget(categoryBox);
 
-        line = new QFrame(widget);
+        line = new QFrame(layoutWidget);
         line->setObjectName(QString::fromUtf8("line"));
         line->setFrameShape(QFrame::VLine);
         line->setFrameShadow(QFrame::Sunken);
@@ -107,4 +107,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // MAINWINDOWXKCKZQ_H
+#endif // MAINWINDOWPJEKKB_H

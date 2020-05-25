@@ -26,13 +26,12 @@ public:
 
 
     void update() override;
-
-    void createCategory(std::string name);
+    void addToCatList(const std::string& n);
 private:
     Ui_MainWindow* ui;
     ControllerMain* controller;
     ModelMain* model;
-    std::list<Category> catList;
+
 
 private slots:
     void showCategoryAdder();

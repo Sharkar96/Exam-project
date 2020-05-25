@@ -24,11 +24,13 @@ void MainWindow::showCategoryAdder() {
 
 }
 
-void MainWindow::createCategory(std::string name) {
-    catList.emplace_back(name);
-}
-
 void MainWindow::update() {
-
+    addToCatList(model->getLastCategoryName());
 }
+
+void MainWindow::addToCatList(const std::string& n) {
+    ui->categoryListWidget->addItem(QString::fromStdString(n));
+}
+
+
 
