@@ -7,7 +7,8 @@
 
 class Observer {
 public:
-    virtual void update() = 0;
+    virtual void update(const std::string& n) = 0;
+    virtual void clear() = 0;
 
     virtual ~Observer() = default;
 };

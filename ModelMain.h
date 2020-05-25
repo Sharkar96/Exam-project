@@ -20,7 +20,7 @@ public:
 
     void addCategory(std::unique_ptr<Category>& c);
     void removeCategory(const std::string& name);
-    const std::string& getLastCategoryName();
+
 private:
     std::list<std::unique_ptr<Category>>::iterator getCategory(const std::string& name);
     //^ suppose it exists

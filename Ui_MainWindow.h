@@ -1,17 +1,18 @@
 /********************************************************************************
-** Form generated from reading UI file 'MainWindowpJeKKB.ui'
+** Form generated from reading UI file 'MainWindowNnEpVF.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.14.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef MAINWINDOWPJEKKB_H
-#define MAINWINDOWPJEKKB_H
+#ifndef MAINWINDOWNNEPVF_H
+#define MAINWINDOWNNEPVF_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFrame>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QListWidget>
@@ -25,16 +26,22 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow {
 public:
     QWidget* centralwidget;
-    QPushButton* addCategoryButton;
     QGroupBox* activityBox;
     QListWidget* activityListWidget;
-    QPushButton* addActivityButton;
     QPushButton* addEntryButton;
     QWidget* layoutWidget;
     QHBoxLayout* categoryLayout;
     QGroupBox* categoryBox;
     QListWidget* categoryListWidget;
     QFrame* line;
+    QWidget* widget;
+    QGridLayout* gridLayout;
+    QPushButton* removeCategoryButton;
+    QPushButton* addCategoryButton;
+    QWidget* widget1;
+    QGridLayout* gridLayout_2;
+    QPushButton* removeActivityButton;
+    QPushButton* addActivityButton;
     QStatusBar* statusbar;
 
     void setupUi(QMainWindow* MainWindow) {
@@ -43,18 +50,12 @@ public:
         MainWindow->resize(749, 600);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        addCategoryButton = new QPushButton(centralwidget);
-        addCategoryButton->setObjectName(QString::fromUtf8("addCategoryButton"));
-        addCategoryButton->setGeometry(QRect(80, 10, 31, 31));
         activityBox = new QGroupBox(centralwidget);
         activityBox->setObjectName(QString::fromUtf8("activityBox"));
         activityBox->setGeometry(QRect(130, 40, 131, 291));
         activityListWidget = new QListWidget(activityBox);
         activityListWidget->setObjectName(QString::fromUtf8("activityListWidget"));
         activityListWidget->setGeometry(QRect(0, 20, 121, 261));
-        addActivityButton = new QPushButton(centralwidget);
-        addActivityButton->setObjectName(QString::fromUtf8("addActivityButton"));
-        addActivityButton->setGeometry(QRect(230, 10, 31, 31));
         addEntryButton = new QPushButton(centralwidget);
         addEntryButton->setObjectName(QString::fromUtf8("addEntryButton"));
         addEntryButton->setGeometry(QRect(140, 340, 112, 32));
@@ -79,6 +80,38 @@ public:
 
         categoryLayout->addWidget(line);
 
+        widget = new QWidget(centralwidget);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(50, 10, 71, 32));
+        gridLayout = new QGridLayout(widget);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        gridLayout->setContentsMargins(0, 0, 0, 0);
+        removeCategoryButton = new QPushButton(widget);
+        removeCategoryButton->setObjectName(QString::fromUtf8("removeCategoryButton"));
+
+        gridLayout->addWidget(removeCategoryButton, 0, 0, 1, 1);
+
+        addCategoryButton = new QPushButton(widget);
+        addCategoryButton->setObjectName(QString::fromUtf8("addCategoryButton"));
+
+        gridLayout->addWidget(addCategoryButton, 0, 1, 1, 1);
+
+        widget1 = new QWidget(centralwidget);
+        widget1->setObjectName(QString::fromUtf8("widget1"));
+        widget1->setGeometry(QRect(190, 10, 71, 32));
+        gridLayout_2 = new QGridLayout(widget1);
+        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
+        gridLayout_2->setContentsMargins(0, 0, 0, 0);
+        removeActivityButton = new QPushButton(widget1);
+        removeActivityButton->setObjectName(QString::fromUtf8("removeActivityButton"));
+
+        gridLayout_2->addWidget(removeActivityButton, 0, 0, 1, 1);
+
+        addActivityButton = new QPushButton(widget1);
+        addActivityButton->setObjectName(QString::fromUtf8("addActivityButton"));
+
+        gridLayout_2->addWidget(addActivityButton, 0, 1, 1, 1);
+
         MainWindow->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -91,11 +124,13 @@ public:
 
     void retranslateUi(QMainWindow* MainWindow) {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        addCategoryButton->setText(QCoreApplication::translate("MainWindow", "+", nullptr));
         activityBox->setTitle(QCoreApplication::translate("MainWindow", "Activities", nullptr));
-        addActivityButton->setText(QCoreApplication::translate("MainWindow", "+", nullptr));
         addEntryButton->setText(QCoreApplication::translate("MainWindow", "add entry", nullptr));
         categoryBox->setTitle(QCoreApplication::translate("MainWindow", "Categories", nullptr));
+        removeCategoryButton->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
+        addCategoryButton->setText(QCoreApplication::translate("MainWindow", "+", nullptr));
+        removeActivityButton->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
+        addActivityButton->setText(QCoreApplication::translate("MainWindow", "+", nullptr));
     } // retranslateUi
 
 };
@@ -107,4 +142,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // MAINWINDOWPJEKKB_H
+#endif // MAINWINDOWNNEPVF_H

@@ -9,6 +9,8 @@ MainWindow::MainWindow(ControllerMain* c, ModelMain* m, QWidget* parent) : contr
     model->addObserver(this);
     ui->setupUi(this);
     QObject::connect(ui->addCategoryButton, &QPushButton::clicked, this, &MainWindow::showCategoryAdder);
+    QObject::connect(ui->removeCategoryButton, &QPushButton::clicked, this, &MainWindow::onRemoveCategoryButton);
+
 }
 
 MainWindow::~MainWindow() {
@@ -24,12 +26,17 @@ void MainWindow::showCategoryAdder() {
 
 }
 
-void MainWindow::update() {
-    addToCatList(model->getLastCategoryName());
+void MainWindow::update(const std::string& n) {
+    ui->categoryListWidget->addItem(QString::fromStdString(n));
 }
 
-void MainWindow::addToCatList(const std::string& n) {
-    ui->categoryListWidget->addItem(QString::fromStdString(n));
+
+void MainWindow::clear() {
+    ui->categoryListWidget->clear();
+}
+
+void MainWindow::onRemoveCategoryButton() {
+    controller->removeCategory(ui->categoryListWidget->currentItem()->text().toStdString());
 }
 
 

@@ -25,8 +25,9 @@ public:
     virtual ~MainWindow();
 
 
-    void update() override;
-    void addToCatList(const std::string& n);
+    void update(const std::string& n) override;
+    void clear() override;
+
 private:
     Ui_MainWindow* ui;
     ControllerMain* controller;
@@ -35,6 +36,7 @@ private:
 
 private slots:
     void showCategoryAdder();
+    void onRemoveCategoryButton();
 
 };
 

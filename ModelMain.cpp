@@ -13,8 +13,11 @@ void ModelMain::removeObserver(Observer* ob) {
 }
 
 void ModelMain::notify() {
-    for(auto i: observers)
-        i->update();
+    for(auto i: observers){
+        i->clear();
+        for(auto& j:categories)
+            i->update(j->getName());
+    }
 }
 
 void ModelMain::addCategory(std::unique_ptr<Category>& c) {
@@ -24,6 +27,7 @@ void ModelMain::addCategory(std::unique_ptr<Category>& c) {
 
 void ModelMain::removeCategory(const std::string& name) {
     categories.erase(getCategory(name));
+    notify();
 }
 
 std::list<std::unique_ptr<Category>>::iterator ModelMain::getCategory(const std::string& name) {
@@ -33,6 +37,4 @@ std::list<std::unique_ptr<Category>>::iterator ModelMain::getCategory(const std:
             return i;
 }
 
-const std::string& ModelMain::getLastCategoryName() {
-    return categories.back()->getName();
-}
+
