@@ -15,3 +15,8 @@ void ControllerMain::addCategory(const std::string& name) {
 void ControllerMain::removeCategory(const std::string& name) {
     model->removeCategory(name);
 }
+
+void ControllerMain::addActivity(const std::string& name, const std::string& d, const std::string& tag) {
+
+}
+
