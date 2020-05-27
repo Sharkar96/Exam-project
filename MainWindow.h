@@ -37,6 +37,7 @@ private:
 private slots:
     void showCategoryAdder();
     void onRemoveCategoryButton();
+    void onCategoryPressed();
 
 };
 

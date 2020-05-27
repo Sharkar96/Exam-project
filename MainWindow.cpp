@@ -10,7 +10,8 @@ MainWindow::MainWindow(ControllerMain* c, ModelMain* m, QWidget* parent) : contr
     ui->setupUi(this);
     QObject::connect(ui->addCategoryButton, &QPushButton::clicked, this, &MainWindow::showCategoryAdder);
     QObject::connect(ui->removeCategoryButton, &QPushButton::clicked, this, &MainWindow::onRemoveCategoryButton);
-
+    QObject::connect(ui->categoryListWidget, &QListWidget::itemSelectionChanged, this, &MainWindow::onCategoryPressed);
+    ui->removeCategoryButton->setDisabled(true);
 }
 
 MainWindow::~MainWindow() {
@@ -26,6 +27,7 @@ void MainWindow::showCategoryAdder() {
 
 }
 
+//XXX the list is cleared and reimplemented from scratch every time an item is added or removed, this could lead to problems
 void MainWindow::update(const std::string& n) {
     ui->categoryListWidget->addItem(QString::fromStdString(n));
 }
@@ -37,6 +39,10 @@ void MainWindow::clear() {
 
 void MainWindow::onRemoveCategoryButton() {
     controller->removeCategory(ui->categoryListWidget->currentItem()->text().toStdString());
+}
+
+void MainWindow::onCategoryPressed() {
+    ui->removeCategoryButton->setDisabled(ui->categoryListWidget->selectedItems().isEmpty());
 }
 
 

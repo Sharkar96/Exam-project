@@ -18,13 +18,16 @@ public:
         return name;
     }
 
-    void setName(const std::string& name) {
-        Category::name = name;
+    void setName(const std::string& n) {
+        name = n;
     }
 
     void print();
+    void addActivity(std::unique_ptr<ActivityBluePrint>& a);
+    void removeActivity(const std::string& name);
 
 private:
+    std::list<std::unique_ptr<ActivityBluePrint>>::iterator getActivity(const std::string& name);
     std::string name;
     //TODO add symbol
     std::list<std::unique_ptr<ActivityBluePrint>> ActivityTypes;

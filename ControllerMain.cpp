@@ -6,7 +6,6 @@
 
 void ControllerMain::addCategory(const std::string& name) {
     if(name.find_first_not_of(' ') != std::string::npos) {
-        //TODO create the category and add it to the widget list
         auto category = std::make_unique<Category>(name);
         model->addCategory(category);
     } else

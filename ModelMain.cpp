@@ -35,6 +35,7 @@ std::list<std::unique_ptr<Category>>::iterator ModelMain::getCategory(const std:
     for(auto i = categories.begin(); i != categories.end(); i++)
         if((*i)->getName() == name)
             return i;
+    return categories.end();
 }
 
 
