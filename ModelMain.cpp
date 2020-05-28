@@ -38,4 +38,12 @@ std::list<std::unique_ptr<Category>>::iterator ModelMain::getCategory(const std:
     return categories.end();
 }
 
+void ModelMain::addActivity(const std::string& catName, std::unique_ptr<ActivityBluePrint>& a) {
+
+}
+
+void ModelMain::removeActivity(const std::string& catName, const std::string& actName) {
+
+}
+
 
