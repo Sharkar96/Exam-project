@@ -15,15 +15,21 @@ CategoryAdderView::CategoryAdderView(ControllerMain* c, QWidget* parent) : contr
 CategoryAdderView::~CategoryAdderView() {
     qobject_cast<QWidget*>(parent())->show();
     delete ui;
-
 }
 
 void CategoryAdderView::onAddCategory() {
     try {
         controller->addCategory(ui->LineEditCategory->text().toStdString());
-        this->close();
-
     } catch(std::out_of_range& e) { //string is null
-        // TODO add dialog for the user
+        QMessageBox msgBox;
+        msgBox.setText(e.what());
+        msgBox.exec();
+
+    } catch(std::invalid_argument& e) {//value already present
+        //TODO throw
+        QMessageBox msgBox;
+        msgBox.setText(e.what());
+        msgBox.exec();
     }
+    this->close();
 }
