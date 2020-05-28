@@ -4,8 +4,11 @@
 
 #include "ActivityAdderView.h"
 
-ActivityAdderView::ActivityAdderView(ControllerMain* c, QWidget* parent) : controller{c}, QDialog{parent},
-                                                                           ui{new Ui_Dialog()} {
+ActivityAdderView::ActivityAdderView(ControllerMain* c, std::string cat, QWidget* parent) : controller{c},
+                                                                                            categoryName{
+                                                                                                    std::move(cat)},
+                                                                                            QDialog{parent},
+                                                                                            ui{new Ui_Dialog2()} {
     ui->setupUi(this);
     QObject::connect(ui->addActivityButton, &QPushButton::clicked, this, &ActivityAdderView::onAddActivity);
 
@@ -20,7 +23,7 @@ ActivityAdderView::~ActivityAdderView() {
 void ActivityAdderView::onAddActivity() {
     try {
         //TODO add color  make a method in this class with a case for each color that return the right color to the controller
-        controller->addActivity(ui->nameLineEdit->text().toStdString(),
+        controller->addActivity(categoryName, ui->nameLineEdit->text().toStdString(),
                                 ui->descriptionPlainTextEdit->toPlainText().toStdString(),
                                 ui->tagLineEdit->text().toStdString());
         this->close();

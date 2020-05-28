@@ -10,6 +10,7 @@
 #include "Ui_MainWindow.h"
 #include <iostream>
 #include "CategoryAdderView.h"
+#include "ActivityAdderView.h"
 #include "Category.h"
 #include "Observer.h"
 #include "ControllerMain.h"
@@ -28,6 +29,7 @@ public:
     void update(const std::string& n) override;
     void clear() override;
 
+    const std::string& getCategoryName();
 private:
     Ui_MainWindow* ui;
     ControllerMain* controller;
@@ -38,6 +40,8 @@ private slots:
     void showCategoryAdder();
     void onRemoveCategoryButton();
     void onCategoryPressed();
+    void onRemoveActivityButton();
+    void onAddActivity();
 
 };
 

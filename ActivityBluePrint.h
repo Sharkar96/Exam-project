@@ -18,6 +18,9 @@ public:
                                                                                      tag{std::move(t)},
                                                                                      description{std::move(d)} {};
 
+    ActivityBluePrint(std::string n, std::string t, std::string d = "") : name{std::move(n)},
+                                                                          tag{std::move(t)},
+                                                                          description{std::move(d)} {};
     void addActivity(tm startTime, tm endTime);
 
     void printActivities();

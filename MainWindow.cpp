@@ -11,7 +11,10 @@ MainWindow::MainWindow(ControllerMain* c, ModelMain* m, QWidget* parent) : contr
     QObject::connect(ui->addCategoryButton, &QPushButton::clicked, this, &MainWindow::showCategoryAdder);
     QObject::connect(ui->removeCategoryButton, &QPushButton::clicked, this, &MainWindow::onRemoveCategoryButton);
     QObject::connect(ui->categoryListWidget, &QListWidget::itemSelectionChanged, this, &MainWindow::onCategoryPressed);
+
     ui->removeCategoryButton->setDisabled(true);
+    ui->addActivityButton->setDisabled(true);
+    ui->removeActivityButton->setDisabled(true);
 }
 
 MainWindow::~MainWindow() {
@@ -38,11 +41,24 @@ void MainWindow::clear() {
 }
 
 void MainWindow::onRemoveCategoryButton() {
-    controller->removeCategory(ui->categoryListWidget->currentItem()->text().toStdString());
+    controller->removeCategory(getCategoryName());
 }
 
 void MainWindow::onCategoryPressed() {
     ui->removeCategoryButton->setDisabled(ui->categoryListWidget->selectedItems().isEmpty());
+    ui->addActivityButton->setDisabled(ui->categoryListWidget->selectedItems().isEmpty());
+    ui->removeActivityButton->setDisabled(ui->categoryListWidget->selectedItems().isEmpty());
+}
+
+void MainWindow::onAddActivity() {
+    //find category pressed
+    ActivityAdderView window(controller, getCategoryName(), this);
+    this->hide();
+    window.exec();
+}
+
+const std::string& MainWindow::getCategoryName() {
+    return ui->categoryListWidget->currentItem()->text().toStdString();
 }
 
 

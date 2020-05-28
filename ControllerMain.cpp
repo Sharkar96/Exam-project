@@ -16,7 +16,13 @@ void ControllerMain::removeCategory(const std::string& name) {
     model->removeCategory(name);
 }
 
-void ControllerMain::addActivity(const std::string& name, const std::string& d, const std::string& tag) {
+void ControllerMain::addActivity(const std::string& cat, const std::string& name, const std::string& d,
+                                 const std::string& tag) {
+    auto activity = std::make_unique<ActivityBluePrint>(name, tag, d);
+    model->addActivity(cat, activity);
+}
 
+void ControllerMain::removeActivity(const std::string& catName, const std::string& actName) {
+    model->removeActivity(catName, actName);
 }
 

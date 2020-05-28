@@ -17,7 +17,8 @@ public:
     void removeCategory(const std::string& name);
 
     //TODO complete add and remove activity
-    void addActivity(const std::string& name, const std::string& d, const std::string& tag);
+    void addActivity(const std::string& cat, const std::string& name, const std::string& d, const std::string& tag);
+    void removeActivity(const std::string& catName, const std::string& actName);
 private:
     ModelMain* model;
 };

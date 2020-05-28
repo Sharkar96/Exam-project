@@ -12,7 +12,7 @@
 class ActivityAdderView : public QDialog {
 Q_OBJECT
 public:
-    explicit ActivityAdderView(ControllerMain* c, QWidget* parent = nullptr);
+    explicit ActivityAdderView(ControllerMain* c, std::string cat, QWidget* parent = nullptr);
 
     ~ActivityAdderView();
 
@@ -20,7 +20,8 @@ private slots:
     void onAddActivity();
 private:
     ControllerMain* controller;
-    Ui_Dialog* ui;
+    std::string categoryName;
+    Ui_Dialog2* ui;
 };
 
 

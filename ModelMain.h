@@ -21,6 +21,8 @@ public:
     void addCategory(std::unique_ptr<Category>& c);
     void removeCategory(const std::string& name);
 
+    //TODO add remove and add activity like in controller
+
 private:
     std::list<std::unique_ptr<Category>>::iterator getCategory(const std::string& name);
     //^ suppose it exists
