@@ -4,6 +4,14 @@
 
 #include "Category.h"
 
+const std::string& Category::getName() const {
+    return name;
+}
+
+void Category::setName(const std::string& n) {
+    name = n;
+}
+
 void Category::print() {
     std::cout << name
               << std::endl;
@@ -24,4 +32,8 @@ std::list<std::unique_ptr<ActivityBluePrint>>::iterator Category::getActivity(co
             return it;
     }
     return ActivityTypes.end();
+}
+
+bool Category::operator==(const Category& right) const {
+    return this->name == right.getName();
 }

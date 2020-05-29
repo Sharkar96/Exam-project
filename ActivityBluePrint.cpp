@@ -47,3 +47,8 @@ void ActivityBluePrint::printActivities() {
     }
 
 }
+
+bool ActivityBluePrint::operator==(const ActivityBluePrint& right) const {
+    return this->name == right.getName();
+}
+

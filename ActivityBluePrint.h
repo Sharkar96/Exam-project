@@ -21,6 +21,7 @@ public:
     ActivityBluePrint(std::string n, std::string t, std::string d = "") : name{std::move(n)},
                                                                           tag{std::move(t)},
                                                                           description{std::move(d)} {};
+    bool operator==(const ActivityBluePrint& right) const;
     void addActivity(tm startTime, tm endTime);
 
     void printActivities();

@@ -11,7 +11,7 @@ void ControllerMain::addCategory(const std::string& name) {
     } else
         throw std::out_of_range("Insert something");
 
-    //TODO here is the throw in case the category is already present: need a function for comparing categories and the operator == in category. All this same for Activity
+    //TODO here is the throw in case the category is already present: need a function for comparing categories and the operator == (DONE the operator ==) in category. All this same for Activity
 }
 
 void ControllerMain::removeCategory(const std::string& name) {

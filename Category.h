@@ -14,18 +14,17 @@ class Category {
 public:
     explicit Category(std::string n) : name{std::move(n)} {};
 
-    const std::string& getName() const {
-        return name;
-    }
 
-    void setName(const std::string& n) {
-        name = n;
-    }
+    bool operator==(const Category& right) const;
+
 
     void print();
     void addActivity(std::unique_ptr<ActivityBluePrint>& a);
     void removeActivity(const std::string& name);
 
+    //GETTER AND SETTER
+    const std::string& getName() const;
+    void setName(const std::string& n);
 private:
     std::list<std::unique_ptr<ActivityBluePrint>>::iterator getActivity(const std::string& name);
     std::string name;

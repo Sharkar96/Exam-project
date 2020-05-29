@@ -28,7 +28,6 @@ void ActivityAdderView::onAddActivity() {
                                 ui->tagLineEdit->text().toStdString());
 
     } catch(std::out_of_range& e) { //string is null
-        // TODO add dialog for the user
         QMessageBox msgBox;
         msgBox.setText(e.what());
         msgBox.exec();
