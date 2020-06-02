@@ -6,8 +6,12 @@
 
 void ControllerMain::addCategory(const std::string& name) {
     if(name.find_first_not_of(' ') != std::string::npos) {
-        auto category = std::make_unique<Category>(name);
-        model->addCategory(category);
+        if(model->checkForDoubleCat(name))
+            throw std::invalid_argument("Category already present");
+        else {
+            auto category = std::make_unique<Category>(name);
+            model->addCategory(category);
+        }
     } else
         throw std::out_of_range("Insert something");
 
@@ -21,8 +25,12 @@ void ControllerMain::removeCategory(const std::string& name) {
 void ControllerMain::addActivity(const std::string& cat, const std::string& name, const std::string& d,
                                  const std::string& tag) {
     if(name.find_first_not_of(' ') != std::string::npos) {
-        auto activity = std::make_unique<ActivityBluePrint>(name, tag, d);
-        model->addActivity(cat, activity);
+        if(model->checkForDoubleCat(name))
+            throw std::invalid_argument("Activity already present");
+        else {
+            auto activity = std::make_unique<ActivityBluePrint>(name, tag, d);
+            model->addActivity(cat, activity);
+        }
     } else
         throw std::out_of_range("Insert something");
 }

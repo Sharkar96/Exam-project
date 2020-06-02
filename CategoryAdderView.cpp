@@ -26,7 +26,6 @@ void CategoryAdderView::onAddCategory() {
         msgBox.exec();
 
     } catch(std::invalid_argument& e) {//value already present
-        //TODO throw
         QMessageBox msgBox;
         msgBox.setText(e.what());
         msgBox.exec();

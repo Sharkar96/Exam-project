@@ -20,10 +20,12 @@ public:
 
     void addCategory(std::unique_ptr<Category>& c);
     void removeCategory(const std::string& name);
+    bool checkForDoubleCat(const std::string& n) const;
 
     //TODO add remove and add activity like in controller finish
     void addActivity(const std::string& catName, std::unique_ptr<ActivityBluePrint>& a);
     void removeActivity(const std::string& catName, const std::string& actName);
+    bool checkForDoubleAct(const std::string& cat, const std::string& n) const;
 private:
     std::list<std::unique_ptr<Category>>::iterator getCategory(const std::string& name);
     //^ suppose it exists

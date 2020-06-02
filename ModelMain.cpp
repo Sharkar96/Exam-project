@@ -46,4 +46,22 @@ void ModelMain::removeActivity(const std::string& catName, const std::string& ac
 
 }
 
+bool ModelMain::checkForDoubleCat(const std::string& n) const {
+    bool found = false;
+    auto it = categories.begin();
+    while(found == false && it != categories.end()) {
+        if((*it)->getName() == n)
+            found = true;
+        else
+            it++;
+    }
+    return found;
+}
+
+bool ModelMain::checkForDoubleAct(const std::string& cat, const std::string& n) const {
+
+    getCategory(cat);
+    return false;
+}
+
 
