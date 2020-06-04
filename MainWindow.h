@@ -29,7 +29,8 @@ public:
     void update(const std::string& n) override;
     void clear() override;
 
-    const std::string& getCategoryName();
+    void updateActiviies();
+    std::string getCategoryName() const;
 private:
     Ui_MainWindow* ui;
     ControllerMain* controller;

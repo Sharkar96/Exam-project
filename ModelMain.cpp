@@ -39,11 +39,14 @@ std::list<std::unique_ptr<Category>>::iterator ModelMain::getCategory(const std:
 }
 
 void ModelMain::addActivity(const std::string& catName, std::unique_ptr<ActivityBluePrint>& a) {
+    (*getCategory(catName))->addActivity(a);
+    notify();
 
 }
 
 void ModelMain::removeActivity(const std::string& catName, const std::string& actName) {
-
+    (*getCategory(catName))->removeActivity(actName);
+    notify();
 }
 
 bool ModelMain::checkForDoubleCat(const std::string& n) const {
@@ -58,10 +61,8 @@ bool ModelMain::checkForDoubleCat(const std::string& n) const {
     return found;
 }
 
-bool ModelMain::checkForDoubleAct(const std::string& cat, const std::string& n) const {
-
-    getCategory(cat);
-    return false;
+bool ModelMain::checkForDoubleAct(const std::string& cat, const std::string& n) {
+    return (*getCategory(cat))->checkForDoubleAct(n);
 }
 
 

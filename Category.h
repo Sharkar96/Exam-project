@@ -21,6 +21,7 @@ public:
     void print();
     void addActivity(std::unique_ptr<ActivityBluePrint>& a);
     void removeActivity(const std::string& name);
+    bool checkForDoubleAct(const std::string& n) const;
 
     //GETTER AND SETTER
     const std::string& getName() const;
@@ -29,7 +30,7 @@ private:
     std::list<std::unique_ptr<ActivityBluePrint>>::iterator getActivity(const std::string& name);
     std::string name;
     //TODO add symbol
-    std::list<std::unique_ptr<ActivityBluePrint>> ActivityTypes;
+    std::list<std::unique_ptr<ActivityBluePrint>> activities;
 
 
 };

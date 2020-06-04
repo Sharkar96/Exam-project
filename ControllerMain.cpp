@@ -14,8 +14,6 @@ void ControllerMain::addCategory(const std::string& name) {
         }
     } else
         throw std::out_of_range("Insert something");
-
-    //TODO here is the throw in case the category is already present: need a function for comparing categories and the operator == (DONE the operator ==) in category. All this same for Activity
 }
 
 void ControllerMain::removeCategory(const std::string& name) {
@@ -25,7 +23,7 @@ void ControllerMain::removeCategory(const std::string& name) {
 void ControllerMain::addActivity(const std::string& cat, const std::string& name, const std::string& d,
                                  const std::string& tag) {
     if(name.find_first_not_of(' ') != std::string::npos) {
-        if(model->checkForDoubleCat(name))
+        if(model->checkForDoubleAct(cat, name))
             throw std::invalid_argument("Activity already present");
         else {
             auto activity = std::make_unique<ActivityBluePrint>(name, tag, d);

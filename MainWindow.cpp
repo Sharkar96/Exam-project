@@ -51,6 +51,7 @@ void MainWindow::onCategoryPressed() {
     ui->removeCategoryButton->setDisabled(ui->categoryListWidget->selectedItems().isEmpty());
     ui->addActivityButton->setDisabled(ui->categoryListWidget->selectedItems().isEmpty());
     ui->removeActivityButton->setDisabled(ui->categoryListWidget->selectedItems().isEmpty());
+
 }
 
 void MainWindow::onAddActivity() {
@@ -59,12 +60,16 @@ void MainWindow::onAddActivity() {
     window.exec();
 }
 
-const std::string& MainWindow::getCategoryName() {
-    return ui->categoryListWidget->currentItem()->text().toStdString();
+std::string MainWindow::getCategoryName() const {
+    return std::move(ui->categoryListWidget->currentItem()->text().toStdString());
 }
 
 void MainWindow::onRemoveActivityButton() {
 
+}
+
+void MainWindow::updateActiviies() {
+    ui->activityListWidget->clear();
 }
 
 

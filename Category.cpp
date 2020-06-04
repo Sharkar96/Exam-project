@@ -19,21 +19,33 @@ void Category::print() {
 }
 
 void Category::addActivity(std::unique_ptr<ActivityBluePrint>& a) {
-    ActivityTypes.push_back(std::move(a));
+    activities.push_back(std::move(a));
 }
 
 void Category::removeActivity(const std::string& name) {
-    ActivityTypes.erase(getActivity(name));
+    activities.erase(getActivity(name));
 }
 
 std::list<std::unique_ptr<ActivityBluePrint>>::iterator Category::getActivity(const std::string& n) {
-    for(auto it = ActivityTypes.begin(); it != ActivityTypes.end(); it++){
+    for(auto it = activities.begin(); it != activities.end(); it++){
         if(n == (*it)->getName())
             return it;
     }
-    return ActivityTypes.end();
+    return activities.end();
 }
 
 bool Category::operator==(const Category& right) const {
     return this->name == right.getName();
+}
+
+bool Category::checkForDoubleAct(const std::string& n) const {
+    bool found = false;
+    auto it = activities.begin();
+    while(found == false && it != activities.end()) {
+        if((*it)->getName() == n)
+            found = true;
+        else
+            it++;
+    }
+    return found;
 }
