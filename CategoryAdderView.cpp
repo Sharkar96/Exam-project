@@ -19,7 +19,7 @@ CategoryAdderView::~CategoryAdderView() {
 
 void CategoryAdderView::onAddCategory() {
     try {
-        controller->addCategory(ui->LineEditCategory->text().toStdString());
+        controller->addCategory(ui->LineEditCategory->text().toStdString(), dynamic_cast<MainWindow*>(parent()));
     } catch(std::out_of_range& e) { //string is null
         QMessageBox msgBox;
         msgBox.setText(e.what());

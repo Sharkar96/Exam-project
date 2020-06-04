@@ -7,9 +7,11 @@
 
 class Observer {
 public:
-    virtual void update(const std::string& n) = 0;
-    virtual void clear() = 0;
+    virtual void updateCategories(const std::string& n) = 0;
+    virtual void clearCatList() = 0;
 
+    virtual void updateActivities(const std::string& n) = 0;
+    virtual void clearActList() = 0;
     virtual ~Observer() = default;
 };
 

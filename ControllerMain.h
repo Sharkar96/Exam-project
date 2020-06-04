@@ -13,12 +13,12 @@ class ControllerMain {
 public:
     explicit ControllerMain(ModelMain* m) : model{m} {};
 
-    void addCategory(const std::string& name);
+    void addCategory(const std::string& name, Observer* ob);
     void removeCategory(const std::string& name);
 
-    //TODO complete add and remove activity
     void addActivity(const std::string& cat, const std::string& name, const std::string& d, const std::string& tag);
     void removeActivity(const std::string& catName, const std::string& actName);
+    void refreshActivities(const std::string& n);
 private:
     ModelMain* model;
 };

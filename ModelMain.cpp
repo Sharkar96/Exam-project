@@ -14,9 +14,9 @@ void ModelMain::removeObserver(Observer* ob) {
 
 void ModelMain::notify() {
     for(auto i: observers){
-        i->clear();
+        i->clearCatList();
         for(auto& j:categories)
-            i->update(j->getName());
+            i->updateCategories(j->getName());
     }
 }
 
@@ -63,6 +63,10 @@ bool ModelMain::checkForDoubleCat(const std::string& n) const {
 
 bool ModelMain::checkForDoubleAct(const std::string& cat, const std::string& n) {
     return (*getCategory(cat))->checkForDoubleAct(n);
+}
+
+void ModelMain::notifyCategory(const std::string& n) {
+    (*getCategory(n))->notify();
 }
 
 

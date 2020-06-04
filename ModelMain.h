@@ -21,6 +21,7 @@ public:
     void addCategory(std::unique_ptr<Category>& c);
     void removeCategory(const std::string& name);
     bool checkForDoubleCat(const std::string& n) const;
+    void notifyCategory(const std::string& n);
 
     //TODO activities need to show up in the view
     void addActivity(const std::string& catName, std::unique_ptr<ActivityBluePrint>& a);

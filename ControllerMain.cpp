@@ -4,12 +4,13 @@
 
 #include "ControllerMain.h"
 
-void ControllerMain::addCategory(const std::string& name) {
+void ControllerMain::addCategory(const std::string& name, Observer* ob) {
     if(name.find_first_not_of(' ') != std::string::npos) {
         if(model->checkForDoubleCat(name))
             throw std::invalid_argument("Category already present");
         else {
             auto category = std::make_unique<Category>(name);
+            category->addObserver(ob);
             model->addCategory(category);
         }
     } else
@@ -35,5 +36,9 @@ void ControllerMain::addActivity(const std::string& cat, const std::string& name
 
 void ControllerMain::removeActivity(const std::string& catName, const std::string& actName) {
     model->removeActivity(catName, actName);
+}
+
+void ControllerMain::refreshActivities(const std::string& n) {
+    model->notifyCategory(n);
 }
 

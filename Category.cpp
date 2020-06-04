@@ -49,3 +49,20 @@ bool Category::checkForDoubleAct(const std::string& n) const {
     }
     return found;
 }
+
+void Category::addObserver(Observer* ob) {
+    observers.push_back(ob);
+}
+
+void Category::removeObserver(Observer* ob) {
+    observers.remove(ob);
+}
+
+void Category::notify() {
+    for(auto i: observers){
+        i->clearActList();
+        for(auto& j:activities)
+            i->updateActivities(j->getName());
+    }
+}
+
