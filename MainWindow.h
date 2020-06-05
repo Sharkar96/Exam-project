@@ -26,10 +26,12 @@ public:
     virtual ~MainWindow();
 
 
-    void update(const std::string& n) override;
-    void clear() override;
+    void updateCategories(const std::string& n) override;
+    void clearCatList() override;
 
-    void updateActiviies();
+    void updateActivities(const std::string& n) override;
+    void clearActList() override;
+
     std::string getCategoryName() const;
 private:
     Ui_MainWindow* ui;
@@ -39,6 +41,7 @@ private:
 
 private slots:
     void showCategoryAdder();
+//FIXME removing the last category crashes everything
     void onRemoveCategoryButton();
     void onCategoryPressed();
     void onRemoveActivityButton();

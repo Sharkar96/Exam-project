@@ -10,7 +10,7 @@ MainWindow::MainWindow(ControllerMain* c, ModelMain* m, QWidget* parent) : contr
     ui->setupUi(this);
     QObject::connect(ui->addCategoryButton, &QPushButton::clicked, this, &MainWindow::showCategoryAdder);
     QObject::connect(ui->removeCategoryButton, &QPushButton::clicked, this, &MainWindow::onRemoveCategoryButton);
-    QObject::connect(ui->categoryListWidget, &QListWidget::itemSelectionChanged, this, &MainWindow::onCategoryPressed);
+    QObject::connect(ui->categoryListWidget, &QListWidget::itemClicked, this, &MainWindow::onCategoryPressed);
     QObject::connect(ui->addActivityButton, &QPushButton::clicked, this, &MainWindow::onAddActivity);
     QObject::connect(ui->removeActivityButton, &QPushButton::clicked, this, &MainWindow::onRemoveActivityButton);
 
