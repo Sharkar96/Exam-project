@@ -17,7 +17,6 @@ ActivityAdderView::ActivityAdderView(ControllerMain* c, std::string cat, QWidget
 
 ActivityAdderView::~ActivityAdderView() {
     qobject_cast<QWidget*>(parent())->show();
-    qobject_cast<QWidget*>(parent())->;
     delete ui;
 }
 

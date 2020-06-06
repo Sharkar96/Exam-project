@@ -10,7 +10,7 @@ MainWindow::MainWindow(ControllerMain* c, ModelMain* m, QWidget* parent) : contr
     ui->setupUi(this);
     QObject::connect(ui->addCategoryButton, &QPushButton::clicked, this, &MainWindow::showCategoryAdder);
     QObject::connect(ui->removeCategoryButton, &QPushButton::clicked, this, &MainWindow::onRemoveCategoryButton);
-    QObject::connect(ui->categoryListWidget, &QListWidget::itemClicked, this, &MainWindow::onCategoryPressed);
+    QObject::connect(ui->categoryListWidget, &QListWidget::clicked, this, &MainWindow::onCategoryPressed);
     QObject::connect(ui->addActivityButton, &QPushButton::clicked, this, &MainWindow::onAddActivity);
     QObject::connect(ui->removeActivityButton, &QPushButton::clicked, this, &MainWindow::onRemoveActivityButton);
 
@@ -30,7 +30,7 @@ void MainWindow::showCategoryAdder() {
     CategoryAdderView window(controller, this);
     this->hide();
     window.exec();
-
+    refreshLists();
 }
 
 //XXX the list is cleared and reimplemented from scratch every time an item is added or removed, this could lead to problems
@@ -44,7 +44,10 @@ void MainWindow::clearCatList() {
 }
 
 void MainWindow::onRemoveCategoryButton() {
-    controller->removeCategory(getCategoryName());
+    if(ui->categoryListWidget->count() > 0) {
+        controller->removeCategory(getCategoryName());
+        refreshLists();
+    }
 }
 
 void MainWindow::onCategoryPressed() {
@@ -58,6 +61,7 @@ void MainWindow::onAddActivity() {
     ActivityAdderView window(controller, getCategoryName(), this);
     this->hide();
     window.exec();
+    refreshLists();
 }
 
 std::string MainWindow::getCategoryName() const {
@@ -65,7 +69,11 @@ std::string MainWindow::getCategoryName() const {
 }
 
 void MainWindow::onRemoveActivityButton() {
-
+    if(ui->activityListWidget->count() > 0) {
+        controller->removeActivity(ui->categoryListWidget->currentItem()->text().toStdString(),
+                                   ui->activityListWidget->currentItem()->text().toStdString());
+        refreshLists();
+    }
 }
 
 void MainWindow::clearActList() {
@@ -74,6 +82,13 @@ void MainWindow::clearActList() {
 
 void MainWindow::updateActivities(const std::string& n) {
     ui->activityListWidget->addItem(QString::fromStdString(n));
+}
+
+void MainWindow::refreshLists() {
+    if(ui->categoryListWidget->count() > 0) {
+        ui->categoryListWidget->setCurrentItem(ui->categoryListWidget->item(0));
+        onCategoryPressed();
+    }
 }
 
 

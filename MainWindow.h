@@ -25,7 +25,6 @@ public:
     explicit MainWindow(ControllerMain* c, ModelMain* m, QWidget* parent = nullptr);
     virtual ~MainWindow();
 
-
     void updateCategories(const std::string& n) override;
     void clearCatList() override;
 
@@ -33,15 +32,14 @@ public:
     void clearActList() override;
 
     std::string getCategoryName() const;
+    void refreshLists();
 private:
     Ui_MainWindow* ui;
     ControllerMain* controller;
     ModelMain* model;
 
-
 private slots:
     void showCategoryAdder();
-//FIXME removing the last category crashes everything
     void onRemoveCategoryButton();
     void onCategoryPressed();
     void onRemoveActivityButton();
