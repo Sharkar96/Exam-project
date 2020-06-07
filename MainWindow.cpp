@@ -30,7 +30,7 @@ void MainWindow::showCategoryAdder() {
     CategoryAdderView window(controller, this);
     this->hide();
     window.exec();
-    refreshLists();
+    refreshActList();
 }
 
 //XXX the list is cleared and reimplemented from scratch every time an item is added or removed, this could lead to problems
@@ -46,7 +46,7 @@ void MainWindow::clearCatList() {
 void MainWindow::onRemoveCategoryButton() {
     if(ui->categoryListWidget->count() > 0) {
         controller->removeCategory(getCategoryName());
-        refreshLists();
+        refreshActList();
     }
 }
 
@@ -54,14 +54,16 @@ void MainWindow::onCategoryPressed() {
     ui->removeCategoryButton->setDisabled(ui->categoryListWidget->selectedItems().isEmpty());
     ui->addActivityButton->setDisabled(ui->categoryListWidget->selectedItems().isEmpty());
     ui->removeActivityButton->setDisabled(ui->categoryListWidget->selectedItems().isEmpty());
-    controller->refreshActivities(getCategoryName());
+
+    refreshActList();
+
 }
 
 void MainWindow::onAddActivity() {
     ActivityAdderView window(controller, getCategoryName(), this);
     this->hide();
     window.exec();
-    refreshLists();
+    refreshActList();
 }
 
 std::string MainWindow::getCategoryName() const {
@@ -72,7 +74,7 @@ void MainWindow::onRemoveActivityButton() {
     if(ui->activityListWidget->count() > 0) {
         controller->removeActivity(ui->categoryListWidget->currentItem()->text().toStdString(),
                                    ui->activityListWidget->currentItem()->text().toStdString());
-        refreshLists();
+        refreshActList();
     }
 }
 
@@ -84,10 +86,12 @@ void MainWindow::updateActivities(const std::string& n) {
     ui->activityListWidget->addItem(QString::fromStdString(n));
 }
 
-void MainWindow::refreshLists() {
+void MainWindow::refreshActList() {
     if(ui->categoryListWidget->count() > 0) {
-        ui->categoryListWidget->setCurrentItem(ui->categoryListWidget->item(0));
-        onCategoryPressed();
+        if(ui->categoryListWidget->currentItem() == nullptr)
+            ui->categoryListWidget->setCurrentItem(ui->categoryListWidget->item(0));
+        clearActList();
+        controller->refreshActivities(getCategoryName());
     }
 }
 

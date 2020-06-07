@@ -60,7 +60,6 @@ void Category::removeObserver(Observer* ob) {
 
 void Category::notify() {
     for(auto i: observers){
-        i->clearActList();
         for(auto& j:activities)
             i->updateActivities(j->getName());
     }

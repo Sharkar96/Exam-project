@@ -11,7 +11,6 @@ public:
     virtual void clearCatList() = 0;
 
     virtual void updateActivities(const std::string& n) = 0;
-    virtual void clearActList() = 0;
     virtual ~Observer() = default;
 };
 

@@ -22,17 +22,18 @@
 class MainWindow : public QMainWindow, public Observer {
 Q_OBJECT
 public:
-    explicit MainWindow(ControllerMain* c, ModelMain* m, QWidget* parent = nullptr);
+    MainWindow(ControllerMain* c, ModelMain* m, QWidget* parent = nullptr);
     virtual ~MainWindow();
 
     void updateCategories(const std::string& n) override;
     void clearCatList() override;
 
     void updateActivities(const std::string& n) override;
-    void clearActList() override;
+    void clearActList();
+    void refreshActList();
 
     std::string getCategoryName() const;
-    void refreshLists();
+
 private:
     Ui_MainWindow* ui;
     ControllerMain* controller;
