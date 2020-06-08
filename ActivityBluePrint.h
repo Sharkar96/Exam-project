@@ -14,13 +14,13 @@
 
 class ActivityBluePrint {
 public:
-    ActivityBluePrint(std::string n, Colors& c, std::string t, std::string d = "") : name{std::move(n)}, color{c},
-                                                                                     tag{std::move(t)},
-                                                                                     description{std::move(d)} {};
+    ActivityBluePrint(std::string n, std::string t, std::string d = "", Colors c = Colors()) : name{std::move(n)},
+                                                                                               tag{std::move(t)},
+                                                                                               description{
+                                                                                                       std::move(d)},
+                                                                                               color{std::move(c)} {};
 
-    ActivityBluePrint(std::string n, std::string t, std::string d = "") : name{std::move(n)},
-                                                                          tag{std::move(t)},
-                                                                          description{std::move(d)} {};
+
     bool operator==(const ActivityBluePrint& right) const;
     void addActivity(tm startTime, tm endTime);
 

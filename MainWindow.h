@@ -34,6 +34,12 @@ public:
 
     std::string getCategoryName() const;
 
+    /*
+     * when pressed opens the EntryAddedView that works just like the others
+     * it adds the activity just like the others.
+     * the problem is how do I remove them
+     *
+     */
 private:
     Ui_MainWindow* ui;
     ControllerMain* controller;
@@ -43,6 +49,7 @@ private slots:
     void showCategoryAdder();
     void onRemoveCategoryButton();
     void onCategoryPressed();
+    void onActivityPressed();
     void onRemoveActivityButton();
     void onAddActivity();
 

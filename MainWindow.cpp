@@ -11,10 +11,11 @@ MainWindow::MainWindow(ControllerMain* c, ModelMain* m, QWidget* parent) : contr
     QObject::connect(ui->addCategoryButton, &QPushButton::clicked, this, &MainWindow::showCategoryAdder);
     QObject::connect(ui->removeCategoryButton, &QPushButton::clicked, this, &MainWindow::onRemoveCategoryButton);
     QObject::connect(ui->categoryListWidget, &QListWidget::clicked, this, &MainWindow::onCategoryPressed);
+    QObject::connect(ui->activityListWidget, &QListWidget::clicked, this, &MainWindow::onActivityPressed);
     QObject::connect(ui->addActivityButton, &QPushButton::clicked, this, &MainWindow::onAddActivity);
     QObject::connect(ui->removeActivityButton, &QPushButton::clicked, this, &MainWindow::onRemoveActivityButton);
 
-
+    ui->addEntryButton->setDisabled(true);
     ui->removeCategoryButton->setDisabled(true);
     ui->addActivityButton->setDisabled(true);
     ui->removeActivityButton->setDisabled(true);
@@ -93,6 +94,10 @@ void MainWindow::refreshActList() {
         clearActList();
         controller->refreshActivities(getCategoryName());
     }
+}
+
+void MainWindow::onActivityPressed() {
+    ui->addEntryButton->setDisabled(ui->activityListWidget->selectedItems().isEmpty());
 }
 
 
