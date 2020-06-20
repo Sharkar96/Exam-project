@@ -200,10 +200,6 @@ public:
 
 };
 
-namespace Ui {
-    class Dialog : public Ui_Dialog2 {
-    };
-} // namespace Ui
 
 QT_END_NAMESPACE
 

@@ -15,6 +15,7 @@
 #include "Observer.h"
 #include "ControllerMain.h"
 #include "ModelMain.h"
+#include "EntryAdderView.h"
 
 //Registro di attività che memorizza cosa si è fatto durante una giornata.
 //Classe che rappresenta attività con descrizione, tempo inizio e fine, Classe registro che colleziona attività su base del giorno.
@@ -25,6 +26,7 @@ public:
     MainWindow(ControllerMain* c, ModelMain* m, QWidget* parent = nullptr);
     virtual ~MainWindow();
 
+
     void updateCategories(const std::string& n) override;
     void clearCatList() override;
 
@@ -33,7 +35,8 @@ public:
     void refreshActList();
 
     std::string getCategoryName() const;
-
+    std::string getActivityName() const;
+    void resetButtons();
     /*
      * when pressed opens the EntryAddedView that works just like the others
      * it adds the activity just like the others.
@@ -52,7 +55,7 @@ private slots:
     void onActivityPressed();
     void onRemoveActivityButton();
     void onAddActivity();
-
+    void onAddEntry();
 };
 
 #endif //EXAM_PROJECT_MAINWINDOW_H

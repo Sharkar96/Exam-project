@@ -4,6 +4,7 @@
 
 #include "MainWindow.h"
 
+
 MainWindow::MainWindow(ControllerMain* c, ModelMain* m, QWidget* parent) : controller{c}, model{m}, QMainWindow(parent),
                                                                            ui(new Ui_MainWindow()) {
     model->addObserver(this);
@@ -14,11 +15,9 @@ MainWindow::MainWindow(ControllerMain* c, ModelMain* m, QWidget* parent) : contr
     QObject::connect(ui->activityListWidget, &QListWidget::clicked, this, &MainWindow::onActivityPressed);
     QObject::connect(ui->addActivityButton, &QPushButton::clicked, this, &MainWindow::onAddActivity);
     QObject::connect(ui->removeActivityButton, &QPushButton::clicked, this, &MainWindow::onRemoveActivityButton);
+    QObject::connect(ui->addEntryButton, &QPushButton::clicked, this, &MainWindow::onAddEntry);
 
-    ui->addEntryButton->setDisabled(true);
-    ui->removeCategoryButton->setDisabled(true);
-    ui->addActivityButton->setDisabled(true);
-    ui->removeActivityButton->setDisabled(true);
+    resetButtons();
 }
 
 MainWindow::~MainWindow() {
@@ -52,12 +51,8 @@ void MainWindow::onRemoveCategoryButton() {
 }
 
 void MainWindow::onCategoryPressed() {
-    ui->removeCategoryButton->setDisabled(ui->categoryListWidget->selectedItems().isEmpty());
-    ui->addActivityButton->setDisabled(ui->categoryListWidget->selectedItems().isEmpty());
-    ui->removeActivityButton->setDisabled(ui->categoryListWidget->selectedItems().isEmpty());
-
     refreshActList();
-
+    resetButtons();
 }
 
 void MainWindow::onAddActivity() {
@@ -70,6 +65,11 @@ void MainWindow::onAddActivity() {
 std::string MainWindow::getCategoryName() const {
     return std::move(ui->categoryListWidget->currentItem()->text().toStdString());
 }
+
+std::string MainWindow::getActivityName() const {
+    return std::move(ui->activityListWidget->currentItem()->text().toStdString());
+}
+
 
 void MainWindow::onRemoveActivityButton() {
     if(ui->activityListWidget->count() > 0) {
@@ -88,17 +88,33 @@ void MainWindow::updateActivities(const std::string& n) {
 }
 
 void MainWindow::refreshActList() {
+    clearActList();
     if(ui->categoryListWidget->count() > 0) {
         if(ui->categoryListWidget->currentItem() == nullptr)
             ui->categoryListWidget->setCurrentItem(ui->categoryListWidget->item(0));
-        clearActList();
         controller->refreshActivities(getCategoryName());
     }
+    resetButtons();
 }
 
 void MainWindow::onActivityPressed() {
-    ui->addEntryButton->setDisabled(ui->activityListWidget->selectedItems().isEmpty());
+    resetButtons();
 }
+
+void MainWindow::onAddEntry() {
+    EntryAdderView window(controller, getCategoryName(), getActivityName(), this);
+    this->hide();
+    window.exec();
+
+}
+
+void MainWindow::resetButtons() {
+    ui->addEntryButton->setDisabled(ui->activityListWidget->selectedItems().isEmpty());
+    ui->removeCategoryButton->setDisabled(ui->categoryListWidget->selectedItems().isEmpty());
+    ui->addActivityButton->setDisabled(ui->categoryListWidget->selectedItems().isEmpty());
+    ui->removeActivityButton->setDisabled(ui->activityListWidget->selectedItems().isEmpty());
+}
+
 
 
 

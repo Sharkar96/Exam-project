@@ -14,7 +14,7 @@ Q_OBJECT
 public:
     explicit ActivityAdderView(ControllerMain* c, std::string cat, QWidget* parent = nullptr);
 
-    ~ActivityAdderView();
+    ~ActivityAdderView() override;
 
 private slots:
     void onAddActivity();
