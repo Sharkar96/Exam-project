@@ -7,6 +7,7 @@
 
 
 #include <list>
+#include <QDate>
 #include "Subject.h"
 #include "Category.h"
 
@@ -23,10 +24,12 @@ public:
     bool checkForDoubleCat(const std::string& n) const;
     void notifyCategory(const std::string& n);
 
-    //TODO activities need to show up in the view
+
     void addActivity(const std::string& catName, std::unique_ptr<ActivityBluePrint>& a);
     void removeActivity(const std::string& catName, const std::string& actName);
     bool checkForDoubleAct(const std::string& cat, const std::string& n);
+
+    void addEntry(const std::string& cat, const std::string& act, std::unique_ptr<Activity> entry);
 private:
     std::list<std::unique_ptr<Category>>::iterator getCategory(const std::string& name);
     //^ suppose it exists

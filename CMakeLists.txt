@@ -13,7 +13,7 @@ set(CMAKE_AUTOMOC ON)
 find_package(Qt5Widgets REQUIRED)
 
 #here goes all the source files except main.cpp
-set(SOURCE_FILES Category.cpp ActivityBluePrint.cpp Colors.cpp MainWindow.cpp CategoryAdderView.cpp ModelMain.cpp ControllerMain.cpp ActivityAdderView.cpp EntryAdderView.cpp)
+set(SOURCE_FILES Category.cpp ActivityBluePrint.cpp Colors.cpp MainWindow.cpp CategoryAdderView.cpp ModelMain.cpp ControllerMain.cpp ActivityAdderView.cpp EntryAdderView.cpp Activity.cpp)
 set(HEADER_FILES Category.h ActivityBluePrint.h Colors.h Activity.h Ui_MainWindow.h MainWindow.h Ui_CategoryAdderView.h CategoryAdderView.h Subject.h Observer.h ModelMain.h ControllerMain.h Ui_ActivityAdderView.h ActivityAdderView.h Ui_EntryAdderView.h EntryAdderView.h)
 
 

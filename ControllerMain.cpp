@@ -42,3 +42,10 @@ void ControllerMain::refreshActivities(const std::string& n) {
     model->notifyCategory(n);
 }
 
+void ControllerMain::addEntry(const std::string& cat, const std::string& act, QTime start, QTime finish, QDate date) {
+    QDateTime s(date, start);
+    QDateTime f(date, finish);
+    auto entry = std::make_unique<Activity>(s, f);
+    model->addEntry(cat, act, std::move(entry));
+}
+

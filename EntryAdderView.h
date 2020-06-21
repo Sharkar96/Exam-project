@@ -20,7 +20,7 @@ public:
 private slots:
     void onAddEntry();
 
-//TODO show this in MainWindow
+
 private:
     ControllerMain* controller;
     std::string category, activity;

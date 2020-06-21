@@ -18,6 +18,7 @@ EntryAdderView::EntryAdderView(ControllerMain* c, std::string cat, std::string a
 
     ui->catLabel->setText(QString::fromStdString(category));
     ui->actLabel->setText(QString::fromStdString(activity));
+    ui->dateEdit->setDate(QDate::currentDate());
 }
 
 EntryAdderView::~EntryAdderView() {
@@ -26,5 +27,6 @@ EntryAdderView::~EntryAdderView() {
 }
 
 void EntryAdderView::onAddEntry() {
-
+    controller->addEntry(category, activity, ui->startTimeEdit->time(), ui->finishTimeEdit->time(),
+                         ui->dateEdit->date());
 }

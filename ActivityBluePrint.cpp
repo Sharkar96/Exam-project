@@ -4,51 +4,51 @@
 
 #include "ActivityBluePrint.h"
 
-const std::string &ActivityBluePrint::getName() const {
+const std::string& ActivityBluePrint::getName() const {
     return name;
 }
 
-void ActivityBluePrint::setName(const std::string &name) {
+void ActivityBluePrint::setName(const std::string& name) {
     ActivityBluePrint::name = name;
 }
 
-const Colors &ActivityBluePrint::getColor() const {
+const Colors& ActivityBluePrint::getColor() const {
     return color;
 }
 
-void ActivityBluePrint::setColor(const Colors &color) {
+void ActivityBluePrint::setColor(const Colors& color) {
     ActivityBluePrint::color = color;
 }
 
-const std::string &ActivityBluePrint::getTag() const {
+const std::string& ActivityBluePrint::getTag() const {
     return tag;
 }
 
-void ActivityBluePrint::setTag(const std::string &tag) {
+void ActivityBluePrint::setTag(const std::string& tag) {
     ActivityBluePrint::tag = tag;
 }
 
-const std::string &ActivityBluePrint::getDescription() const {
+const std::string& ActivityBluePrint::getDescription() const {
     return description;
 }
 
-void ActivityBluePrint::setDescription(const std::string &description) {
+void ActivityBluePrint::setDescription(const std::string& description) {
     ActivityBluePrint::description = description;
 }
 
-void ActivityBluePrint::addActivity(tm startTime, tm endTime) {
-    activities.emplace_back(std::make_unique<Activity>(startTime, endTime));
-}
 
 void ActivityBluePrint::printActivities() {
-    for(auto& i:activities){
-        std::cout << i->startTime.tm_hour << ":" << i->startTime.tm_min << std::endl;
-        std::cout << i->endTime.tm_hour << ":" << i->endTime.tm_min << std::endl;
-    }
-
+    for(const auto& i:activities)
+        std::cout << i.second->getStartTime().toString(QT_FEATURE_textdate) << std::endl;
+//TODO print activities start time
 }
 
 bool ActivityBluePrint::operator==(const ActivityBluePrint& right) const {
     return this->name == right.getName();
+}
+
+void ActivityBluePrint::addActivity(std::unique_ptr<Activity> entry) {
+    auto key = QDateTime(entry->getStartTime());
+    activities.emplace(key, std::move(entry));
 }
 

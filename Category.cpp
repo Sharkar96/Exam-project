@@ -65,3 +65,7 @@ void Category::notify() {
     }
 }
 
+void Category::addEntry(const std::string& act, std::unique_ptr<Activity> entry) {
+    (*getActivity(act))->addActivity(std::move(entry));
+}
+

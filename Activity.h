@@ -5,11 +5,27 @@
 #ifndef EXAM_PROJECT_ACTIVITY_H
 #define EXAM_PROJECT_ACTIVITY_H
 
-struct Activity {
-    Activity(tm start, tm end) : startTime{start}, endTime{end} {};
+#include <QDateTime>
+#include <utility>
 
-    tm startTime;
-    tm endTime;
+class Activity {
+public:
+    Activity(QDateTime start, QDateTime end) : startTime{std::move(start)}, endTime{std::move(end)} {};
+
+    void setElapsed();
+
+    //GETTER and SETTER
+    const QDateTime& getStartTime() const;
+    void setStartTime(const QDateTime& startTime);
+    const QDateTime& getEndTime() const;
+    void setEndTime(const QDateTime& endTime);
+private:
+    QDateTime startTime;
+    QDateTime endTime;
+    // int elapsed;
+
+
 };
+
 
 #endif //EXAM_PROJECT_ACTIVITY_H

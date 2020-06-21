@@ -6,9 +6,10 @@
 #define EXAM_PROJECT_ACTIVITYBLUEPRINT_H
 
 
-#include <vector>
 #include <iostream>
 #include <ctime>
+#include <map>
+#include <QDate>
 #include "Colors.h"
 #include "Activity.h"
 
@@ -22,7 +23,7 @@ public:
 
 
     bool operator==(const ActivityBluePrint& right) const;
-    void addActivity(tm startTime, tm endTime);
+    void addActivity(std::unique_ptr<Activity> entry);
 
     void printActivities();
 
@@ -40,7 +41,7 @@ protected:
     Colors color;
     std::string tag; // productivity, waste of time, school related etc.
     std::string description;
-    std::vector<std::unique_ptr<Activity>> activities;
+    std::multimap<QDateTime, std::unique_ptr<Activity>> activities;
 };
 
 

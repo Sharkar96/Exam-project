@@ -7,7 +7,9 @@
 
 
 #include "ModelMain.h"
+#include "Activity.h"
 #include <string>
+#include <QTime>
 
 class ControllerMain {
 public:
@@ -19,6 +21,9 @@ public:
     void addActivity(const std::string& cat, const std::string& name, const std::string& d, const std::string& tag);
     void removeActivity(const std::string& catName, const std::string& actName);
     void refreshActivities(const std::string& n);
+
+    //TODO finish add entry
+    void addEntry(const std::string& cat, const std::string& act, QTime start, QTime finish, QDate date);
 private:
     ModelMain* model;
 };

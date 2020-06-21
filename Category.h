@@ -10,6 +10,7 @@
 #include <iostream>
 #include <list>
 #include <utility>
+#include <QTime>
 
 class Category : public Subject {
 public:
@@ -29,6 +30,7 @@ public:
     void removeActivity(const std::string& name);
     bool checkForDoubleAct(const std::string& n) const;
 
+    void addEntry(const std::string& act, std::unique_ptr<Activity> entry);
     //GETTER AND SETTER
     const std::string& getName() const;
     void setName(const std::string& n);
