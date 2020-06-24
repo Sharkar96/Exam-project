@@ -13,8 +13,9 @@ void Category::setName(const std::string& n) {
 }
 
 void Category::print() {
-    std::cout << name
-              << std::endl;
+    std::cout << name << std::endl;
+    for(const auto& i:activities)
+        i->printActivities();
 
 }
 

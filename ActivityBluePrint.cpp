@@ -39,8 +39,7 @@ void ActivityBluePrint::setDescription(const std::string& description) {
 
 void ActivityBluePrint::printActivities() {
     for(const auto& i:activities)
-        std::cout << i.second->getStartTime().toString(QT_FEATURE_textdate) << std::endl;
-//TODO print activities start time
+        std::cout << i.second->getStartTime().toString().toStdString() << std::endl;
 }
 
 bool ActivityBluePrint::operator==(const ActivityBluePrint& right) const {
@@ -50,5 +49,6 @@ bool ActivityBluePrint::operator==(const ActivityBluePrint& right) const {
 void ActivityBluePrint::addActivity(std::unique_ptr<Activity> entry) {
     auto key = QDateTime(entry->getStartTime());
     activities.emplace(key, std::move(entry));
+
 }
 

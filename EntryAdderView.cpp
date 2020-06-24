@@ -29,4 +29,5 @@ EntryAdderView::~EntryAdderView() {
 void EntryAdderView::onAddEntry() {
     controller->addEntry(category, activity, ui->startTimeEdit->time(), ui->finishTimeEdit->time(),
                          ui->dateEdit->date());
+    this->close();
 }

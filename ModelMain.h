@@ -23,7 +23,7 @@ public:
     void removeCategory(const std::string& name);
     bool checkForDoubleCat(const std::string& n) const;
     void notifyCategory(const std::string& n);
-
+    void printCategories();
 
     void addActivity(const std::string& catName, std::unique_ptr<ActivityBluePrint>& a);
     void removeActivity(const std::string& catName, const std::string& actName);

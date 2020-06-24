@@ -73,4 +73,9 @@ void ModelMain::addEntry(const std::string& cat, const std::string& act, std::un
     (*getCategory(cat))->addEntry(act, std::move(entry));
 }
 
+void ModelMain::printCategories() {
+    for(const auto& i: categories)
+        i->print();
+}
+
 

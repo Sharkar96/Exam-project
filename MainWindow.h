@@ -37,6 +37,8 @@ public:
     std::string getCategoryName() const;
     std::string getActivityName() const;
     void resetButtons();
+
+    void saveSession();
     /*
      * when pressed opens the EntryAddedView that works just like the others
      * it adds the activity just like the others.

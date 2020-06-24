@@ -21,6 +21,7 @@ MainWindow::MainWindow(ControllerMain* c, ModelMain* m, QWidget* parent) : contr
 }
 
 MainWindow::~MainWindow() {
+    saveSession();
     model->removeObserver(this);
     delete ui;
 }
@@ -113,6 +114,10 @@ void MainWindow::resetButtons() {
     ui->removeCategoryButton->setDisabled(ui->categoryListWidget->selectedItems().isEmpty());
     ui->addActivityButton->setDisabled(ui->categoryListWidget->selectedItems().isEmpty());
     ui->removeActivityButton->setDisabled(ui->activityListWidget->selectedItems().isEmpty());
+}
+
+void MainWindow::saveSession() {
+    controller->saveSession();
 }
 
 

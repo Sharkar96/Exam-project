@@ -49,3 +49,7 @@ void ControllerMain::addEntry(const std::string& cat, const std::string& act, QT
     model->addEntry(cat, act, std::move(entry));
 }
 
+void ControllerMain::saveSession() {
+    model->printCategories();
+}
+
