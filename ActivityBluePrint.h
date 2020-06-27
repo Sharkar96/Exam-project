@@ -22,7 +22,6 @@ public:
                                                                                                color{std::move(c)} {};
 
 
-    bool operator==(const ActivityBluePrint& right) const;
     void addActivity(std::unique_ptr<Activity> entry);
 
     void printActivities();

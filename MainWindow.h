@@ -16,10 +16,14 @@
 #include "ControllerMain.h"
 #include "ModelMain.h"
 #include "EntryAdderView.h"
+#include <QtCharts>
+
+
 
 //Registro di attività che memorizza cosa si è fatto durante una giornata.
 //Classe che rappresenta attività con descrizione, tempo inizio e fine, Classe registro che colleziona attività su base del giorno.
 //Interfaccia semplice per mostrare il registro sulla base di un giorno
+
 class MainWindow : public QMainWindow, public Observer {
 Q_OBJECT
 public:
@@ -33,18 +37,16 @@ public:
     void updateActivities(const std::string& n) override;
     void clearActList();
     void refreshActList();
+    void updateActivityInfo();
 
     std::string getCategoryName() const;
     std::string getActivityName() const;
     void resetButtons();
 
     void saveSession();
-    /*
-     * when pressed opens the EntryAddedView that works just like the others
-     * it adds the activity just like the others.
-     * the problem is how do I remove them
-     *
-     */
+
+    void createChart();
+
 private:
     Ui_MainWindow* ui;
     ControllerMain* controller;

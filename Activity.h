@@ -13,6 +13,7 @@ public:
     Activity(QDateTime start, QDateTime end) : startTime{std::move(start)}, endTime{std::move(end)} {};
 
     void setElapsed();
+    void print();
 
     //GETTER and SETTER
     const QDateTime& getStartTime() const;
@@ -22,7 +23,7 @@ public:
 private:
     QDateTime startTime;
     QDateTime endTime;
-    // int elapsed;
+    int elapsed{0};
 
 
 };

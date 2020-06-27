@@ -35,10 +35,6 @@ std::list<std::unique_ptr<ActivityBluePrint>>::iterator Category::getActivity(co
     return activities.end();
 }
 
-bool Category::operator==(const Category& right) const {
-    return this->name == right.getName();
-}
-
 bool Category::checkForDoubleAct(const std::string& n) const {
     bool found = false;
     auto it = activities.begin();
@@ -69,4 +65,14 @@ void Category::notify() {
 void Category::addEntry(const std::string& act, std::unique_ptr<Activity> entry) {
     (*getActivity(act))->addActivity(std::move(entry));
 }
+
+std::string Category::getDescription(const std::string& act) {
+    return (*getActivity(act))->getDescription();
+}
+
+std::string Category::getTags(const std::string& act) {
+    return (*getActivity(act))->getTag();
+}
+
+
 

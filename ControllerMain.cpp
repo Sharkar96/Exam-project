@@ -43,13 +43,24 @@ void ControllerMain::refreshActivities(const std::string& n) {
 }
 
 void ControllerMain::addEntry(const std::string& cat, const std::string& act, QTime start, QTime finish, QDate date) {
-    QDateTime s(date, start);
-    QDateTime f(date, finish);
-    auto entry = std::make_unique<Activity>(s, f);
-    model->addEntry(cat, act, std::move(entry));
+    if(finish > start) {
+        QDateTime s(date, start);
+        QDateTime f(date, finish);
+        auto entry = std::make_unique<Activity>(s, f);
+        model->addEntry(cat, act, std::move(entry));
+    } else
+        throw std::invalid_argument("Start time can't be greater than Finish time");
 }
 
 void ControllerMain::saveSession() {
     model->printCategories();
+}
+
+std::string ControllerMain::getDescription(const std::string& cat, const std::string& act) {
+    return std::move(model->getDescription(cat, act));
+}
+
+std::string ControllerMain::getTags(const std::string& cat, const std::string& act) {
+    return std::move(model->getTags(cat, act));
 }
 

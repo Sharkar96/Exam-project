@@ -16,9 +16,6 @@ class Category : public Subject {
 public:
     explicit Category(std::string n) : name{std::move(n)} {};
 
-
-    bool operator==(const Category& right) const;
-
     void addObserver(Observer* ob) override;
     void removeObserver(Observer* ob) override;
     void notify() override;
@@ -29,6 +26,8 @@ public:
     void addActivity(std::unique_ptr<ActivityBluePrint>& a);
     void removeActivity(const std::string& name);
     bool checkForDoubleAct(const std::string& n) const;
+    std::string getDescription(const std::string& act);
+    std::string getTags(const std::string& act);
 
     void addEntry(const std::string& act, std::unique_ptr<Activity> entry);
     //GETTER AND SETTER

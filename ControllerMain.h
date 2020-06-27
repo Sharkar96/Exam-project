@@ -21,7 +21,8 @@ public:
     void addActivity(const std::string& cat, const std::string& name, const std::string& d, const std::string& tag);
     void removeActivity(const std::string& catName, const std::string& actName);
     void refreshActivities(const std::string& n);
-
+    std::string getDescription(const std::string& cat, const std::string& act);
+    std::string getTags(const std::string& cat, const std::string& act);
     void addEntry(const std::string& cat, const std::string& act, QTime start, QTime finish, QDate date);
 
     void saveSession();

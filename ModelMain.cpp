@@ -78,4 +78,12 @@ void ModelMain::printCategories() {
         i->print();
 }
 
+std::string ModelMain::getDescription(const std::string& cat, const std::string& act) {
+    return std::move((*getCategory(cat))->getDescription(act));
+}
+
+std::string ModelMain::getTags(const std::string& cat, const std::string& act) {
+    return std::move((*getCategory(cat))->getTags(act));
+}
+
 

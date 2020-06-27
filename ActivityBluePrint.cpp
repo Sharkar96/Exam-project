@@ -42,10 +42,6 @@ void ActivityBluePrint::printActivities() {
         std::cout << i.second->getStartTime().toString().toStdString() << std::endl;
 }
 
-bool ActivityBluePrint::operator==(const ActivityBluePrint& right) const {
-    return this->name == right.getName();
-}
-
 void ActivityBluePrint::addActivity(std::unique_ptr<Activity> entry) {
     auto key = QDateTime(entry->getStartTime());
     activities.emplace(key, std::move(entry));

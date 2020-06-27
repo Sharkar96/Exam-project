@@ -100,6 +100,7 @@ void MainWindow::refreshActList() {
 
 void MainWindow::onActivityPressed() {
     resetButtons();
+    updateActivityInfo();
 }
 
 void MainWindow::onAddEntry() {
@@ -118,6 +119,16 @@ void MainWindow::resetButtons() {
 
 void MainWindow::saveSession() {
     controller->saveSession();
+}
+
+void MainWindow::createChart() {
+    //QBarSet * set0= new QBarSet("activity 1");
+}
+
+void MainWindow::updateActivityInfo() {
+    statusBar()->clearMessage();
+    ui->description->setText(QString::fromStdString(controller->getDescription(getCategoryName(), getActivityName())));
+    statusBar()->showMessage(QString::fromStdString(controller->getTags(getCategoryName(), getActivityName())));
 }
 
 

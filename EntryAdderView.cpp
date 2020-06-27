@@ -27,7 +27,13 @@ EntryAdderView::~EntryAdderView() {
 }
 
 void EntryAdderView::onAddEntry() {
-    controller->addEntry(category, activity, ui->startTimeEdit->time(), ui->finishTimeEdit->time(),
-                         ui->dateEdit->date());
+    try {
+        controller->addEntry(category, activity, ui->startTimeEdit->time(), ui->finishTimeEdit->time(),
+                             ui->dateEdit->date());
+    } catch(std::invalid_argument& e) {//finish time < start time
+        QMessageBox msgBox;
+        msgBox.setText(e.what());
+        msgBox.exec();
+    }
     this->close();
 }
