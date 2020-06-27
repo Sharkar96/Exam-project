@@ -38,8 +38,12 @@ void ActivityBluePrint::setDescription(const std::string& description) {
 
 
 void ActivityBluePrint::printActivities() {
-    for(const auto& i:activities)
-        std::cout << i.second->getStartTime().toString().toStdString() << std::endl;
+    for(const auto& i:activities){
+        std::cout << name << " ";
+        i.second->print();
+        std::cout << std::endl;
+    }
+
 }
 
 void ActivityBluePrint::addActivity(std::unique_ptr<Activity> entry) {
