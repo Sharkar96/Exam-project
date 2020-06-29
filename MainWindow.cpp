@@ -27,7 +27,6 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::showCategoryAdder() {
-
     CategoryAdderView window(controller, this);
     this->hide();
     window.exec();
@@ -39,21 +38,17 @@ void MainWindow::updateCategories(const std::string& n) {
     ui->categoryListWidget->addItem(QString::fromStdString(n));
 }
 
-
 void MainWindow::clearCatList() {
     ui->categoryListWidget->clear();
 }
 
 void MainWindow::onRemoveCategoryButton() {
-    if(ui->categoryListWidget->count() > 0) {
-        controller->removeCategory(getCategoryName());
-        refreshActList();
-    }
+    controller->removeCategory(getCategoryName());
+    refreshActList();
 }
 
 void MainWindow::onCategoryPressed() {
     refreshActList();
-    resetButtons();
 }
 
 void MainWindow::onAddActivity() {
@@ -61,6 +56,7 @@ void MainWindow::onAddActivity() {
     this->hide();
     window.exec();
     refreshActList();
+
 }
 
 std::string MainWindow::getCategoryName() const {
@@ -71,17 +67,10 @@ std::string MainWindow::getActivityName() const {
     return std::move(ui->activityListWidget->currentItem()->text().toStdString());
 }
 
-
 void MainWindow::onRemoveActivityButton() {
-    if(ui->activityListWidget->count() > 0) {
-        controller->removeActivity(ui->categoryListWidget->currentItem()->text().toStdString(),
-                                   ui->activityListWidget->currentItem()->text().toStdString());
-        refreshActList();
-    }
-}
-
-void MainWindow::clearActList() {
-    ui->activityListWidget->clear();
+    controller->removeActivity(ui->categoryListWidget->currentItem()->text().toStdString(),
+                               ui->activityListWidget->currentItem()->text().toStdString());
+    refreshActList();
 }
 
 void MainWindow::updateActivities(const std::string& n) {
@@ -89,12 +78,13 @@ void MainWindow::updateActivities(const std::string& n) {
 }
 
 void MainWindow::refreshActList() {
-    clearActList();
+    ui->activityListWidget->clear();
     if(ui->categoryListWidget->count() > 0) {
         if(ui->categoryListWidget->currentItem() == nullptr)
             ui->categoryListWidget->setCurrentItem(ui->categoryListWidget->item(0));
         controller->refreshActivities(getCategoryName());
     }
+    updateActivityInfo();
     resetButtons();
 }
 
@@ -103,7 +93,7 @@ void MainWindow::onActivityPressed() {
     updateActivityInfo();
 }
 
-void MainWindow::onAddEntry() {
+void MainWindow::onAddEntry() {//Suppose button is disabled if no activity is selected
     EntryAdderView window(controller, getCategoryName(), getActivityName(), this);
     this->hide();
     window.exec();
@@ -127,8 +117,13 @@ void MainWindow::createChart() {
 
 void MainWindow::updateActivityInfo() {
     statusBar()->clearMessage();
-    ui->description->setText(QString::fromStdString(controller->getDescription(getCategoryName(), getActivityName())));
-    statusBar()->showMessage(QString::fromStdString(controller->getTags(getCategoryName(), getActivityName())));
+    ui->description->clear();
+    if(ui->activityListWidget->currentItem() != nullptr) {
+        ui->description->setText(
+                QString::fromStdString(controller->getDescription(getCategoryName(), getActivityName())));
+        statusBar()->showMessage(
+                "Tags: " + QString::fromStdString(controller->getTags(getCategoryName(), getActivityName())));
+    }
 }
 
 

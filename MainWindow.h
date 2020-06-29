@@ -35,7 +35,6 @@ public:
     void clearCatList() override;
 
     void updateActivities(const std::string& n) override;
-    void clearActList();
     void refreshActList();
     void updateActivityInfo();
 

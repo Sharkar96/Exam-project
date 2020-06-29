@@ -37,10 +37,7 @@ private:
     std::list<Observer*> observers;
     std::list<std::unique_ptr<ActivityBluePrint>>::iterator getActivity(const std::string& name);
     std::string name;
-    //TODO add symbol
     std::list<std::unique_ptr<ActivityBluePrint>> activities;
-
-
 };
 
 
