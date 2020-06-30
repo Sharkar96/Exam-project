@@ -40,11 +40,15 @@ void MainWindow::showCategoryAdder() {
 }
 
 //XXX the list is cleared and reimplemented from scratch every time an item is added or removed, this could lead to problems
-void MainWindow::updateCategories(const std::string& n) {
-    ui->categoryListWidget->addItem(QString::fromStdString(n));
+void MainWindow::update(Subject* s, const std::string& n) {
+    auto p = dynamic_cast<ModelMain*>(s);
+    if(p)
+        ui->categoryListWidget->addItem(QString::fromStdString(n));
+    else
+        ui->activityListWidget->addItem(QString::fromStdString(n));
 }
 
-void MainWindow::clearCatList() {
+void MainWindow::clear() {
     ui->categoryListWidget->clear();
 }
 
@@ -77,10 +81,6 @@ void MainWindow::onRemoveActivityButton() {
     controller->removeActivity(ui->categoryListWidget->currentItem()->text().toStdString(),
                                ui->activityListWidget->currentItem()->text().toStdString());
     refreshActList();
-}
-
-void MainWindow::updateActivities(const std::string& n) {
-    ui->activityListWidget->addItem(QString::fromStdString(n));
 }
 
 void MainWindow::refreshActList() {

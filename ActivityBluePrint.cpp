@@ -56,3 +56,16 @@ void ActivityBluePrint::getEntries() {
 //TODO new it needs to send the entries to the list
 }
 
+void ActivityBluePrint::addObserver(Observer* ob) {
+    observers.push_back(ob);
+}
+
+void ActivityBluePrint::removeObserver(Observer* ob) {
+    observers.remove(ob);
+}
+
+void ActivityBluePrint::notify() {
+    for(const auto& i:observers)
+        1 + 2;
+}
+

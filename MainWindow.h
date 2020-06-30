@@ -30,10 +30,10 @@ public:
     virtual ~MainWindow();
 
 
-    void updateCategories(const std::string& n) override;
-    void clearCatList() override;
+    void update(Subject* s, const std::string& n) override;
+    void clear() override;
 
-    void updateActivities(const std::string& n) override;
+
     void refreshActList();
     void updateActivityInfo();
 

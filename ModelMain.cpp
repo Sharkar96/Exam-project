@@ -14,9 +14,9 @@ void ModelMain::removeObserver(Observer* ob) {
 
 void ModelMain::notify() {
     for(auto i: observers){
-        i->clearCatList();
+        i->clear();
         for(auto& j:categories)
-            i->updateCategories(j->getName());
+            i->update(this, j->getName());
     }
 }
 

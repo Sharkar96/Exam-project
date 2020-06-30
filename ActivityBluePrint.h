@@ -12,8 +12,9 @@
 #include <QDate>
 #include "Colors.h"
 #include "Activity.h"
+#include "Subject.h"
 
-class ActivityBluePrint {
+class ActivityBluePrint : public Subject {
 public:
     ActivityBluePrint(std::string n, std::string t, std::string d = "", Colors c = Colors()) : name{std::move(n)},
                                                                                                tag{std::move(t)},
@@ -21,6 +22,9 @@ public:
                                                                                                        std::move(d)},
                                                                                                color{std::move(c)} {};
 
+    void addObserver(Observer* ob) override;
+    void removeObserver(Observer* ob) override;
+    void notify() override;
 
     void addActivity(std::unique_ptr<Activity> entry);
 
@@ -42,6 +46,7 @@ protected:
     Colors color;
     std::string tag; // productivity, waste of time, school related etc.
     std::string description;
+    std::list<Observer*> observers;
     std::multimap<QDateTime, std::unique_ptr<Activity>> activities;
 };
 
