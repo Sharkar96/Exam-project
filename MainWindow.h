@@ -18,8 +18,6 @@
 #include "EntryAdderView.h"
 #include <QtCharts>
 
-
-
 //Registro di attività che memorizza cosa si è fatto durante una giornata.
 //Classe che rappresenta attività con descrizione, tempo inizio e fine, Classe registro che colleziona attività su base del giorno.
 //Interfaccia semplice per mostrare il registro sulla base di un giorno
@@ -47,6 +45,7 @@ public:
     void createChart();
 
 private:
+    QDate date;
     Ui_MainWindow* ui;
     ControllerMain* controller;
     ModelMain* model;
@@ -59,6 +58,8 @@ private slots:
     void onRemoveActivityButton();
     void onAddActivity();
     void onAddEntry();
+    void onIncreaseDateButton();
+    void onDecreaseDateButton();
 };
 
 #endif //EXAM_PROJECT_MAINWINDOW_H

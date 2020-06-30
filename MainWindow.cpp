@@ -6,9 +6,12 @@
 
 
 MainWindow::MainWindow(ControllerMain* c, ModelMain* m, QWidget* parent) : controller{c}, model{m}, QMainWindow(parent),
-                                                                           ui(new Ui_MainWindow()) {
+                                                                           ui(new Ui_MainWindow()),
+                                                                           date{QDate::currentDate()} {
     model->addObserver(this);
     ui->setupUi(this);
+    ui->dateLabel->setText(date.toString("d/MM/yy"));
+
     QObject::connect(ui->addCategoryButton, &QPushButton::clicked, this, &MainWindow::showCategoryAdder);
     QObject::connect(ui->removeCategoryButton, &QPushButton::clicked, this, &MainWindow::onRemoveCategoryButton);
     QObject::connect(ui->categoryListWidget, &QListWidget::clicked, this, &MainWindow::onCategoryPressed);
@@ -16,6 +19,8 @@ MainWindow::MainWindow(ControllerMain* c, ModelMain* m, QWidget* parent) : contr
     QObject::connect(ui->addActivityButton, &QPushButton::clicked, this, &MainWindow::onAddActivity);
     QObject::connect(ui->removeActivityButton, &QPushButton::clicked, this, &MainWindow::onRemoveActivityButton);
     QObject::connect(ui->addEntryButton, &QPushButton::clicked, this, &MainWindow::onAddEntry);
+    QObject::connect(ui->dateIncreaseButton, &QPushButton::clicked, this, &MainWindow::onIncreaseDateButton);
+    QObject::connect(ui->dateDescreaseButton, &QPushButton::clicked, this, &MainWindow::onDecreaseDateButton);
 
     resetButtons();
 }
@@ -105,6 +110,7 @@ void MainWindow::resetButtons() {
     ui->removeCategoryButton->setDisabled(ui->categoryListWidget->selectedItems().isEmpty());
     ui->addActivityButton->setDisabled(ui->categoryListWidget->selectedItems().isEmpty());
     ui->removeActivityButton->setDisabled(ui->activityListWidget->selectedItems().isEmpty());
+    ui->viewEntriesButton->setDisabled(ui->activityListWidget->selectedItems().isEmpty());
 }
 
 void MainWindow::saveSession() {
@@ -124,6 +130,16 @@ void MainWindow::updateActivityInfo() {
         statusBar()->showMessage(
                 "Tags: " + QString::fromStdString(controller->getTags(getCategoryName(), getActivityName())));
     }
+}
+
+void MainWindow::onIncreaseDateButton() {
+    date = date.addDays(1);
+    ui->dateLabel->setText(date.toString("d/MM/yy"));
+}
+
+void MainWindow::onDecreaseDateButton() {
+    date = date.addDays(-1);
+    ui->dateLabel->setText(date.toString("d/MM/yy"));
 }
 
 

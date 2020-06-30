@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'MainWindowHDfLli.ui'
+** Form generated from reading UI file 'MainWindowLWEGMy.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.14.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef MAINWINDOWHDFLLI_H
-#define MAINWINDOWHDFLLI_H
+#ifndef MAINWINDOWLWEGMY_H
+#define MAINWINDOWLWEGMY_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -21,6 +21,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
+#include <QtCharts>
 
 QT_BEGIN_NAMESPACE
 
@@ -45,6 +46,13 @@ public:
     QPushButton* addActivityButton;
     QLabel* descriptionLabel;
     QLabel* description;
+    QChartView* graphicsView;
+    QPushButton* viewEntriesButton;
+    QWidget* widget;
+    QHBoxLayout* horizontalLayout;
+    QPushButton* dateDescreaseButton;
+    QLabel* dateLabel;
+    QPushButton* dateIncreaseButton;
     QStatusBar* statusbar;
 
     void setupUi(QMainWindow* MainWindow) {
@@ -123,6 +131,33 @@ public:
         description->setGeometry(QRect(40, 400, 201, 111));
         description->setAlignment(Qt::AlignLeading | Qt::AlignLeft | Qt::AlignTop);
         description->setWordWrap(true);
+        graphicsView = new QChartView(centralwidget);
+        graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
+        graphicsView->setGeometry(QRect(320, 90, 371, 331));
+        viewEntriesButton = new QPushButton(centralwidget);
+        viewEntriesButton->setObjectName(QString::fromUtf8("viewEntriesButton"));
+        viewEntriesButton->setGeometry(QRect(620, 520, 112, 32));
+        widget = new QWidget(centralwidget);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(410, 40, 176, 32));
+        horizontalLayout = new QHBoxLayout(widget);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        dateDescreaseButton = new QPushButton(widget);
+        dateDescreaseButton->setObjectName(QString::fromUtf8("dateDescreaseButton"));
+
+        horizontalLayout->addWidget(dateDescreaseButton);
+
+        dateLabel = new QLabel(widget);
+        dateLabel->setObjectName(QString::fromUtf8("dateLabel"));
+
+        horizontalLayout->addWidget(dateLabel);
+
+        dateIncreaseButton = new QPushButton(widget);
+        dateIncreaseButton->setObjectName(QString::fromUtf8("dateIncreaseButton"));
+
+        horizontalLayout->addWidget(dateIncreaseButton);
+
         MainWindow->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -144,10 +179,14 @@ public:
         addActivityButton->setText(QCoreApplication::translate("MainWindow", "+", nullptr));
         descriptionLabel->setText(QCoreApplication::translate("MainWindow", "Description", nullptr));
         description->setText(QString());
+        viewEntriesButton->setText(QCoreApplication::translate("MainWindow", "view entries", nullptr));
+        dateDescreaseButton->setText(QCoreApplication::translate("MainWindow", "<", nullptr));
+        dateLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        dateIncreaseButton->setText(QCoreApplication::translate("MainWindow", ">", nullptr));
     } // retranslateUi
 
 };
 
 QT_END_NAMESPACE
 
-#endif // MAINWINDOWHDFLLI_H
+#endif // MAINWINDOWLWEGMY_H
