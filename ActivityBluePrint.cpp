@@ -52,3 +52,7 @@ void ActivityBluePrint::addActivity(std::unique_ptr<Activity> entry) {
 
 }
 
+void ActivityBluePrint::getEntries() {
+//TODO new it needs to send the entries to the list
+}
+

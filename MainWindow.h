@@ -16,6 +16,7 @@
 #include "ControllerMain.h"
 #include "ModelMain.h"
 #include "EntryAdderView.h"
+#include "EntryViewerView.h"
 #include <QtCharts>
 
 //Registro di attività che memorizza cosa si è fatto durante una giornata.
@@ -58,6 +59,7 @@ private slots:
     void onRemoveActivityButton();
     void onAddActivity();
     void onAddEntry();
+    void onViewEntries();
     void onIncreaseDateButton();
     void onDecreaseDateButton();
 };

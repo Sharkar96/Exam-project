@@ -64,3 +64,7 @@ std::string ControllerMain::getTags(const std::string& cat, const std::string& a
     return std::move(model->getTags(cat, act));
 }
 
+void ControllerMain::viewEntries(const std::string& cat, const std::string& act) {
+    model->getEntries(cat, act);
+}
+

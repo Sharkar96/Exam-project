@@ -23,7 +23,9 @@ public:
     void refreshActivities(const std::string& n);
     std::string getDescription(const std::string& cat, const std::string& act);
     std::string getTags(const std::string& cat, const std::string& act);
+
     void addEntry(const std::string& cat, const std::string& act, QTime start, QTime finish, QDate date);
+    void viewEntries(const std::string& cat, const std::string& act);
 
     void saveSession();
 private:

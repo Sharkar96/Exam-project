@@ -18,6 +18,7 @@ public:
 
 private slots:
     void onAddActivity();
+
 private:
     ControllerMain* controller;
     std::string categoryName;

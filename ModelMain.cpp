@@ -86,4 +86,8 @@ std::string ModelMain::getTags(const std::string& cat, const std::string& act) {
     return std::move((*getCategory(cat))->getTags(act));
 }
 
+void ModelMain::getEntries(const std::string& cat, const std::string& act) {
+    (*getCategory(cat))->getEntries(act);
+}
+
 

@@ -21,6 +21,7 @@ MainWindow::MainWindow(ControllerMain* c, ModelMain* m, QWidget* parent) : contr
     QObject::connect(ui->addEntryButton, &QPushButton::clicked, this, &MainWindow::onAddEntry);
     QObject::connect(ui->dateIncreaseButton, &QPushButton::clicked, this, &MainWindow::onIncreaseDateButton);
     QObject::connect(ui->dateDescreaseButton, &QPushButton::clicked, this, &MainWindow::onDecreaseDateButton);
+    QObject::connect(ui->viewEntriesButton, &QPushButton::clicked, this, &MainWindow::onViewEntries);
 
     resetButtons();
 }
@@ -140,6 +141,12 @@ void MainWindow::onIncreaseDateButton() {
 void MainWindow::onDecreaseDateButton() {
     date = date.addDays(-1);
     ui->dateLabel->setText(date.toString("d/MM/yy"));
+}
+
+void MainWindow::onViewEntries() {
+    EntryViewerView window(controller, getCategoryName(), getActivityName(), this);
+    window.exec();
+
 }
 
 

@@ -74,5 +74,9 @@ std::string Category::getTags(const std::string& act) {
     return (*getActivity(act))->getTag();
 }
 
+void Category::getEntries(const std::string& act) {
+    (*getActivity(act))->getEntries();
+}
+
 
 

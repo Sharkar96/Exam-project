@@ -30,6 +30,7 @@ public:
     std::string getTags(const std::string& act);
 
     void addEntry(const std::string& act, std::unique_ptr<Activity> entry);
+    void getEntries(const std::string& act);
     //GETTER AND SETTER
     const std::string& getName() const;
     void setName(const std::string& n);

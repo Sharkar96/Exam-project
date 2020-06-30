@@ -26,6 +26,8 @@ public:
 
     void printActivities();
 
+    void getEntries();
+
     //GETTER AND SETTER
     const std::string& getName() const;
     void setName(const std::string& name);

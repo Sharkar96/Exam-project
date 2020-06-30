@@ -32,6 +32,8 @@ public:
     std::string getTags(const std::string& cat, const std::string& act);
 
     void addEntry(const std::string& cat, const std::string& act, std::unique_ptr<Activity> entry);
+    void getEntries(const std::string& cat, const std::string& act);
+
 private:
     std::list<std::unique_ptr<Category>>::iterator getCategory(const std::string& name);
     //^ suppose it exists
