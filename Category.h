@@ -7,6 +7,7 @@
 
 #include "ActivityBluePrint.h"
 #include "Subject.h"
+#include "ListObserverInterface.h"
 #include <iostream>
 #include <list>
 #include <utility>
@@ -26,14 +27,17 @@ public:
     void addActivity(std::unique_ptr<ActivityBluePrint>& a);
     void removeActivity(const std::string& name);
     bool checkForDoubleAct(const std::string& n) const;
-    std::string getDescription(const std::string& act);
-    std::string getTags(const std::string& act);
+
+    ActivityBluePrint* getAddress(const std::string& act);
 
     void addEntry(const std::string& act, std::unique_ptr<Activity> entry);
-    void getEntries(const std::string& act);
+
     //GETTER AND SETTER
     const std::string& getName() const;
     void setName(const std::string& n);
+    std::string getDescription(const std::string& act);
+    std::string getTags(const std::string& act);
+
 private:
     std::list<Observer*> observers;
     std::list<std::unique_ptr<ActivityBluePrint>>::iterator getActivity(const std::string& name);

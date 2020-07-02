@@ -4,6 +4,7 @@
 
 #include "Category.h"
 
+
 const std::string& Category::getName() const {
     return name;
 }
@@ -57,8 +58,11 @@ void Category::removeObserver(Observer* ob) {
 
 void Category::notify() {
     for(auto i: observers){
-        for(auto& j:activities)
-            i->update(this, j->getName());
+        auto p = dynamic_cast<ListObserverInterface*>(i);
+        if(p) {
+            for(auto& j:activities)
+                p->update(this, j->getName());
+        }
     }
 }
 
@@ -74,8 +78,8 @@ std::string Category::getTags(const std::string& act) {
     return (*getActivity(act))->getTag();
 }
 
-void Category::getEntries(const std::string& act) {
-    (*getActivity(act))->getEntries();
+ActivityBluePrint* Category::getAddress(const std::string& act) {
+    return (*getActivity(act))->getAddress();
 }
 
 

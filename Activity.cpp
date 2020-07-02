@@ -7,7 +7,6 @@
 
 void Activity::setElapsed() {
     elapsed = startTime.secsTo(endTime);
-    std::cout << elapsed << std::endl;
 }
 
 const QDateTime& Activity::getStartTime() const {
@@ -28,5 +27,9 @@ void Activity::setEndTime(const QDateTime& endTime) {
 
 void Activity::print() {
     std::cout << startTime.toString("dd.MM.yyyy hh:mm").toStdString();
+}
+
+int Activity::getElapsed() const {
+    return elapsed;
 }
 

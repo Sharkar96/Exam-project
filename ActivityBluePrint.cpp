@@ -52,10 +52,6 @@ void ActivityBluePrint::addActivity(std::unique_ptr<Activity> entry) {
 
 }
 
-void ActivityBluePrint::getEntries() {
-//TODO new it needs to send the entries to the list
-}
-
 void ActivityBluePrint::addObserver(Observer* ob) {
     observers.push_back(ob);
 }
@@ -65,7 +61,15 @@ void ActivityBluePrint::removeObserver(Observer* ob) {
 }
 
 void ActivityBluePrint::notify() {
-    for(const auto& i:observers)
-        1 + 2;
+    for(const auto& i:observers){
+        auto p = dynamic_cast<EntryObserverInterface*>(i);
+        if(p)
+            for(const auto& j:activities)
+                p->update(j.second);
+    }
+}
+
+ActivityBluePrint* ActivityBluePrint::getAddress() {
+    return this;
 }
 

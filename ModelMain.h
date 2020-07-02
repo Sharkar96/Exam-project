@@ -10,6 +10,7 @@
 #include <QDate>
 #include "Subject.h"
 #include "Category.h"
+#include"ListObserverInterface.h"
 
 class ModelMain : public Subject {
 public:
@@ -30,9 +31,9 @@ public:
     bool checkForDoubleAct(const std::string& cat, const std::string& n);
     std::string getDescription(const std::string& cat, const std::string& act);
     std::string getTags(const std::string& cat, const std::string& act);
+    ActivityBluePrint* getAddress(const std::string& cat, const std::string& act);
 
     void addEntry(const std::string& cat, const std::string& act, std::unique_ptr<Activity> entry);
-    void getEntries(const std::string& cat, const std::string& act);
 
 private:
     std::list<std::unique_ptr<Category>>::iterator getCategory(const std::string& name);

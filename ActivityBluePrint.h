@@ -13,6 +13,7 @@
 #include "Colors.h"
 #include "Activity.h"
 #include "Subject.h"
+#include "EntryObserverInterface.h"
 
 class ActivityBluePrint : public Subject {
 public:
@@ -30,8 +31,7 @@ public:
 
     void printActivities();
 
-    void getEntries();
-
+    ActivityBluePrint* getAddress();
     //GETTER AND SETTER
     const std::string& getName() const;
     void setName(const std::string& name);

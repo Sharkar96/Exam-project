@@ -8,19 +8,25 @@
 
 #include "Ui_EntryViewer.h"
 #include "ControllerMain.h"
+#include "EntryObserverInterface.h"
 
-class EntryViewerView : public QDialog {
+class EntryViewerView : public QDialog, public EntryObserverInterface {
 Q_OBJECT
 public:
     EntryViewerView(ControllerMain* c, std::string cat, std::string act, QWidget* parent = nullptr);
     virtual ~EntryViewerView();
 
+    void update(const std::unique_ptr<Activity>& a) override;
+
+    void addEntry(int e, const QDateTime& s, const QDateTime& f);
 private slots:
 
 private:
+    int rows{0};
     ControllerMain* controller;
     std::string category, activity;
     Ui_Dialog4* ui;
+    ActivityBluePrint* subject;
 };
 
 

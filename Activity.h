@@ -10,7 +10,9 @@
 
 class Activity {
 public:
-    Activity(QDateTime start, QDateTime end) : startTime{std::move(start)}, endTime{std::move(end)} {};
+    Activity(QDateTime start, QDateTime end) : startTime{std::move(start)}, endTime{std::move(end)} {
+        setElapsed();
+    };
 
     void setElapsed();
     void print();
@@ -20,11 +22,11 @@ public:
     void setStartTime(const QDateTime& startTime);
     const QDateTime& getEndTime() const;
     void setEndTime(const QDateTime& endTime);
+    int getElapsed() const;
 private:
     QDateTime startTime;
     QDateTime endTime;
     int elapsed{0};
-
 
 };
 

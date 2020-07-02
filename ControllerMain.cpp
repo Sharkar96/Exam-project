@@ -4,7 +4,7 @@
 
 #include "ControllerMain.h"
 
-void ControllerMain::addCategory(const std::string& name, Observer* ob) {
+void ControllerMain::addCategory(const std::string& name, ListObserverInterface* ob) {
     if(name.find_first_not_of(' ') != std::string::npos) {
         if(model->checkForDoubleCat(name))
             throw std::invalid_argument("Category already present");
@@ -64,7 +64,8 @@ std::string ControllerMain::getTags(const std::string& cat, const std::string& a
     return std::move(model->getTags(cat, act));
 }
 
-void ControllerMain::viewEntries(const std::string& cat, const std::string& act) {
-    model->getEntries(cat, act);
+
+ActivityBluePrint* ControllerMain::getAddress(const std::string& cat, const std::string& act) {
+    return model->getAddress(cat, act);
 }
 

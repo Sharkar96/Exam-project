@@ -144,6 +144,7 @@ void MainWindow::onDecreaseDateButton() {
 }
 
 void MainWindow::onViewEntries() {
+    //controller needs method for getting subject address
     EntryViewerView window(controller, getCategoryName(), getActivityName(), this);
     window.exec();
 

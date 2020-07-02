@@ -14,9 +14,12 @@ void ModelMain::removeObserver(Observer* ob) {
 
 void ModelMain::notify() {
     for(auto i: observers){
-        i->clear();
-        for(auto& j:categories)
-            i->update(this, j->getName());
+        auto p = dynamic_cast<ListObserverInterface*>(i);
+        if(p) {
+            p->clear();
+            for(auto& j:categories)
+                p->update(this, j->getName());
+        }
     }
 }
 
@@ -86,8 +89,8 @@ std::string ModelMain::getTags(const std::string& cat, const std::string& act) {
     return std::move((*getCategory(cat))->getTags(act));
 }
 
-void ModelMain::getEntries(const std::string& cat, const std::string& act) {
-    (*getCategory(cat))->getEntries(act);
+ActivityBluePrint* ModelMain::getAddress(const std::string& cat, const std::string& act) {
+    return (*getCategory(cat))->getAddress(act);
 }
 
 

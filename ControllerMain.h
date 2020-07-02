@@ -15,7 +15,7 @@ class ControllerMain {
 public:
     explicit ControllerMain(ModelMain* m) : model{m} {};
 
-    void addCategory(const std::string& name, Observer* ob);
+    void addCategory(const std::string& name, ListObserverInterface* ob);
     void removeCategory(const std::string& name);
 
     void addActivity(const std::string& cat, const std::string& name, const std::string& d, const std::string& tag);
@@ -23,9 +23,9 @@ public:
     void refreshActivities(const std::string& n);
     std::string getDescription(const std::string& cat, const std::string& act);
     std::string getTags(const std::string& cat, const std::string& act);
+    ActivityBluePrint* getAddress(const std::string& cat, const std::string& act);
 
     void addEntry(const std::string& cat, const std::string& act, QTime start, QTime finish, QDate date);
-    void viewEntries(const std::string& cat, const std::string& act);
 
     void saveSession();
 private:
