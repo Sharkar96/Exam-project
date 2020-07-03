@@ -21,13 +21,13 @@ void ControllerMain::removeCategory(const std::string& name) {
     model->removeCategory(name);
 }
 
-void ControllerMain::addActivity(const std::string& cat, const std::string& name, const std::string& d,
+void ControllerMain::addActivity(const std::string& cat, const std::string& name, Chart* subject, const std::string& d,
                                  const std::string& tag) {
     if(name.find_first_not_of(' ') != std::string::npos) {
         if(model->checkForDoubleAct(cat, name))
             throw std::invalid_argument("Activity already present");
         else {
-            auto activity = std::make_unique<ActivityBluePrint>(name, tag, d);
+            auto activity = std::make_unique<ActivityBluePrint>(name, tag, subject, d);
             model->addActivity(cat, activity);
         }
     } else

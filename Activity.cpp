@@ -13,16 +13,8 @@ const QDateTime& Activity::getStartTime() const {
     return startTime;
 }
 
-void Activity::setStartTime(const QDateTime& startTime) {
-    Activity::startTime = startTime;
-}
-
 const QDateTime& Activity::getEndTime() const {
     return endTime;
-}
-
-void Activity::setEndTime(const QDateTime& endTime) {
-    Activity::endTime = endTime;
 }
 
 void Activity::print() {

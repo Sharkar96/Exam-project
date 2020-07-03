@@ -6,11 +6,10 @@
 
 
 MainWindow::MainWindow(ControllerMain* c, ModelMain* m, QWidget* parent) : controller{c}, model{m}, QMainWindow(parent),
-                                                                           ui(new Ui_MainWindow()),
-                                                                           date{QDate::currentDate()} {
+                                                                           ui(new Ui_MainWindow()) {
     model->addObserver(this);
     ui->setupUi(this);
-    ui->dateLabel->setText(date.toString("d/MM/yy"));
+    ui->dateLabel->setText(chart.getDate().toString("d/MM/yy"));
 
     QObject::connect(ui->addCategoryButton, &QPushButton::clicked, this, &MainWindow::showCategoryAdder);
     QObject::connect(ui->removeCategoryButton, &QPushButton::clicked, this, &MainWindow::onRemoveCategoryButton);
@@ -62,7 +61,7 @@ void MainWindow::onCategoryPressed() {
 }
 
 void MainWindow::onAddActivity() {
-    ActivityAdderView window(controller, getCategoryName(), this);
+    ActivityAdderView window(getCategoryName(), this);
     this->hide();
     window.exec();
     refreshActList();
@@ -144,10 +143,17 @@ void MainWindow::onDecreaseDateButton() {
 }
 
 void MainWindow::onViewEntries() {
-    //controller needs method for getting subject address
     EntryViewerView window(controller, getCategoryName(), getActivityName(), this);
     window.exec();
 
+}
+
+ControllerMain* MainWindow::getController() const {
+    return controller;
+}
+
+Chart* MainWindow::getChartAddress() {
+    return &chart;
 }
 
 

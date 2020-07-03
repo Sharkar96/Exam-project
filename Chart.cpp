@@ -22,9 +22,24 @@ void Chart::notify() {
 
 void Chart::setDate(const QDate& date) {
     Chart::date = date;
+    totalTimeTracked = 0;
     notify();
 }
 
 const QDate& Chart::getDate() const {
     return date;
 }
+
+Chart::Chart() {
+    date = QDate::currentDate();
+}
+
+int Chart::getTotalTimeTracked() const {
+    return totalTimeTracked;
+}
+
+void Chart::setTotalTimeTracked(int totalTimeTracked) {
+    Chart::totalTimeTracked = totalTimeTracked;
+    std::cout << totalTimeTracked << std::endl;
+}
+

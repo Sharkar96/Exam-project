@@ -7,7 +7,6 @@
 
 
 #include <iostream>
-#include <ctime>
 #include <map>
 #include <QDate>
 #include "Colors.h"
@@ -17,13 +16,11 @@
 #include "ChartObserverInterface.h"
 #include "Chart.h"
 
+class Chart;
+
 class ActivityBluePrint : public Subject, public ChartObserverInterface {
 public:
-    ActivityBluePrint(std::string n, std::string t, std::string d = "", Colors c = Colors()) : name{std::move(n)},
-                                                                                               tag{std::move(t)},
-                                                                                               description{
-                                                                                                       std::move(d)},
-                                                                                               color{std::move(c)} {};
+    ActivityBluePrint(std::string n, std::string t, Chart* s, std::string d = "", Colors c = Colors());
 
     void addObserver(Observer* ob) override;
     void removeObserver(Observer* ob) override;
@@ -34,21 +31,22 @@ public:
     void addActivity(std::unique_ptr<Activity> entry);
     void printActivities();
 
+    int getTimeTracked(const QDate& d);
     ActivityBluePrint* getAddress();
+
     //GETTER AND SETTER
     const std::string& getName() const;
     const Colors& getColor() const;
     const std::string& getTag() const;
     const std::string& getDescription() const;
 
-
 protected:
     std::string name{"default"};
     Colors color;
     std::string tag; // productivity, waste of time, school related etc.
+    Chart* subject;
     std::string description;
     std::list<Observer*> observers;
-    Chart* subject;
     std::multimap<QDateTime, std::unique_ptr<Activity>> activities;
 };
 

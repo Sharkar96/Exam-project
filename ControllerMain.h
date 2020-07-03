@@ -18,7 +18,8 @@ public:
     void addCategory(const std::string& name, ListObserverInterface* ob);
     void removeCategory(const std::string& name);
 
-    void addActivity(const std::string& cat, const std::string& name, const std::string& d, const std::string& tag);
+    void addActivity(const std::string& cat, const std::string& name, Chart* subject, const std::string& d,
+                     const std::string& tag);
     void removeActivity(const std::string& catName, const std::string& actName);
     void refreshActivities(const std::string& n);
     std::string getDescription(const std::string& cat, const std::string& act);

@@ -4,6 +4,20 @@
 
 #include "ActivityBluePrint.h"
 
+ActivityBluePrint::ActivityBluePrint(std::string n, std::string t, Chart* s, std::string d, Colors c) : name{
+        std::move(n)},
+                                                                                                        tag{std::move(
+                                                                                                                t)},
+                                                                                                        subject{s},
+                                                                                                        description{
+                                                                                                                std::move(
+                                                                                                                        d)},
+                                                                                                        color{std::move(
+                                                                                                                c)} {
+
+    subject->addObserver(this);
+}
+
 const std::string& ActivityBluePrint::getName() const {
     return name;
 }
@@ -57,6 +71,14 @@ ActivityBluePrint* ActivityBluePrint::getAddress() {
 }
 
 void ActivityBluePrint::update() {
+    subject->setTotalTimeTracked(subject->getTotalTimeTracked() + getTimeTracked(subject->getDate()));
+}
 
+int ActivityBluePrint::getTimeTracked(const QDate& d) {
+    int timeTracked = 0;
+    for(const auto& i:activities)
+        if(i.first.date() == d)
+            timeTracked += i.second->getElapsed();
+    return timeTracked;
 }
 

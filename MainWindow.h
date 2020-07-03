@@ -17,6 +17,7 @@
 #include "ModelMain.h"
 #include "EntryAdderView.h"
 #include "EntryViewerView.h"
+#include "Chart.h"
 #include <QtCharts>
 
 //Registro di attività che memorizza cosa si è fatto durante una giornata.
@@ -44,12 +45,14 @@ public:
 
     void createChart();
 
+    //GETTER and SETTER
+    ControllerMain* getController() const;
+    Chart* getChartAddress();
 private:
     Ui_MainWindow* ui;
     ControllerMain* controller;
     ModelMain* model;
     Chart chart;
-    
 private slots:
     void showCategoryAdder();
     void onRemoveCategoryButton();

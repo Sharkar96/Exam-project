@@ -6,12 +6,13 @@
 #define EXAM_PROJECT_CHART_H
 
 #include <list>
-#include "Subject.h"
 #include "ActivityBluePrint.h"
+#include "Subject.h"
 #include "ChartObserverInterface.h"
 
 class Chart : public Subject {
 public:
+    Chart();
 
     void addObserver(Observer* ob) override;
     void removeObserver(Observer* ob) override;
@@ -21,9 +22,11 @@ public:
     //GETTER and SETTER
     void setDate(const QDate& date);
     const QDate& getDate() const;
+    int getTotalTimeTracked() const;
+    void setTotalTimeTracked(int totalTimeTracked);
 
 private:
-    int totalTimeTracked;
+    int totalTimeTracked{0};
     QDate date;
     std::list<Observer*> observers;
 };

@@ -19,9 +19,7 @@ public:
 
     //GETTER and SETTER
     const QDateTime& getStartTime() const;
-    void setStartTime(const QDateTime& startTime);
     const QDateTime& getEndTime() const;
-    void setEndTime(const QDateTime& endTime);
     int getElapsed() const;
 private:
     QDateTime startTime;
