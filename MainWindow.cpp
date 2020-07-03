@@ -134,13 +134,13 @@ void MainWindow::updateActivityInfo() {
 }
 
 void MainWindow::onIncreaseDateButton() {
-    date = date.addDays(1);
-    ui->dateLabel->setText(date.toString("d/MM/yy"));
+    chart.setDate(chart.getDate().addDays(1));
+    ui->dateLabel->setText(chart.getDate().toString("d/MM/yy"));
 }
 
 void MainWindow::onDecreaseDateButton() {
-    date = date.addDays(-1);
-    ui->dateLabel->setText(date.toString("d/MM/yy"));
+    chart.setDate(chart.getDate().addDays(-1));
+    ui->dateLabel->setText(chart.getDate().toString("d/MM/yy"));
 }
 
 void MainWindow::onViewEntries() {

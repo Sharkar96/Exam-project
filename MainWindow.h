@@ -45,11 +45,11 @@ public:
     void createChart();
 
 private:
-    QDate date;
     Ui_MainWindow* ui;
     ControllerMain* controller;
     ModelMain* model;
-
+    Chart chart;
+    
 private slots:
     void showCategoryAdder();
     void onRemoveCategoryButton();
