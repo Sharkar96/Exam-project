@@ -82,3 +82,7 @@ int ActivityBluePrint::getTimeTracked(const QDate& d) {
     return timeTracked;
 }
 
+ActivityBluePrint::~ActivityBluePrint() {
+    subject->removeObserver(this);
+}
+

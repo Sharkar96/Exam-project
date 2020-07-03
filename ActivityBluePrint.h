@@ -16,12 +16,12 @@
 #include "ChartObserverInterface.h"
 #include "Chart.h"
 
-class Chart;
+class Chart; //if this is removed Chart is not recognised for some reasons
 
 class ActivityBluePrint : public Subject, public ChartObserverInterface {
 public:
     ActivityBluePrint(std::string n, std::string t, Chart* s, std::string d = "", Colors c = Colors());
-
+    virtual ~ActivityBluePrint();
     void addObserver(Observer* ob) override;
     void removeObserver(Observer* ob) override;
     void notify() override;
