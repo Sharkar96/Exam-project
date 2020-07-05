@@ -46,6 +46,7 @@ void ActivityBluePrint::printActivities() {
 void ActivityBluePrint::addActivity(std::unique_ptr<Activity> entry) {
     auto key = QDateTime(entry->getStartTime());
     activities.emplace(key, std::move(entry));
+    update();
 
 }
 
@@ -71,7 +72,9 @@ ActivityBluePrint* ActivityBluePrint::getAddress() {
 }
 
 void ActivityBluePrint::update() {
-    subject->setTotalTimeTracked(subject->getTotalTimeTracked() + getTimeTracked(subject->getDate()));
+    int time = getTimeTracked(subject->getDate());
+    subject->updateObData(this, name, time);
+    subject->setTotalTimeTracked(time);
 }
 
 int ActivityBluePrint::getTimeTracked(const QDate& d) {
@@ -83,6 +86,7 @@ int ActivityBluePrint::getTimeTracked(const QDate& d) {
 }
 
 ActivityBluePrint::~ActivityBluePrint() {
+    subject->setTotalTimeTracked(-getTimeTracked(subject->getDate()));
     subject->removeObserver(this);
 }
 

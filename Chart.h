@@ -9,6 +9,7 @@
 #include "ActivityBluePrint.h"
 #include "Subject.h"
 #include "ChartObserverInterface.h"
+#include <QtCharts>
 
 class Chart : public Subject {
 public:
@@ -18,6 +19,8 @@ public:
     void removeObserver(Observer* ob) override;
     void notify() override;
 
+    void updateObData(Observer* o, const std::string& n, int t);
+    QChart* createChart();
 
     //GETTER and SETTER
     void setDate(const QDate& date);
@@ -28,7 +31,7 @@ public:
 private:
     int totalTimeTracked{0};
     QDate date;
-    std::list<Observer*> observers;
+    std::map<Observer*, std::pair<std::string, int>> observers;
 };
 
 

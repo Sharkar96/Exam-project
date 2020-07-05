@@ -102,6 +102,7 @@ void MainWindow::onAddEntry() {//Suppose button is disabled if no activity is se
     EntryAdderView window(controller, getCategoryName(), getActivityName(), this);
     this->hide();
     window.exec();
+    createChart();
 
 }
 
@@ -118,7 +119,17 @@ void MainWindow::saveSession() {
 }
 
 void MainWindow::createChart() {
-    //QBarSet * set0= new QBarSet("activity 1");
+    auto cha = chart.createChart();
+    if(cha) {
+        ui->graphicsView->show();
+        QChart::ChartTheme theme = QtCharts::QChart::ChartThemeDark;
+        cha->setTheme(theme);
+        ui->graphicsView->setChart(cha);
+        ui->graphicsView->setRenderHint(QPainter::Antialiasing);
+
+    } else
+        ui->graphicsView->hide();
+
 }
 
 void MainWindow::updateActivityInfo() {
@@ -135,11 +146,13 @@ void MainWindow::updateActivityInfo() {
 void MainWindow::onIncreaseDateButton() {
     chart.setDate(chart.getDate().addDays(1));
     ui->dateLabel->setText(chart.getDate().toString("d/MM/yy"));
+    createChart();
 }
 
 void MainWindow::onDecreaseDateButton() {
     chart.setDate(chart.getDate().addDays(-1));
     ui->dateLabel->setText(chart.getDate().toString("d/MM/yy"));
+    createChart();
 }
 
 void MainWindow::onViewEntries() {
