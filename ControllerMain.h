@@ -28,7 +28,6 @@ public:
 
     void addEntry(const std::string& cat, const std::string& act, QTime start, QTime finish, QDate date);
 
-    void saveSession();
 private:
     ModelMain* model;
 };

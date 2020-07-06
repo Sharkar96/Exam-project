@@ -4,16 +4,14 @@
 
 #include "ActivityBluePrint.h"
 
-ActivityBluePrint::ActivityBluePrint(std::string n, std::string t, Chart* s, std::string d, Colors c) : name{
+ActivityBluePrint::ActivityBluePrint(std::string n, std::string t, Chart* s, std::string d) : name{
         std::move(n)},
-                                                                                                        tag{std::move(
-                                                                                                                t)},
-                                                                                                        subject{s},
-                                                                                                        description{
-                                                                                                                std::move(
-                                                                                                                        d)},
-                                                                                                        color{std::move(
-                                                                                                                c)} {
+                                                                                              tag{std::move(
+                                                                                                      t)},
+                                                                                              subject{s},
+                                                                                              description{
+                                                                                                      std::move(
+                                                                                                              d)} {
 
     subject->addObserver(this);
 }
@@ -22,25 +20,12 @@ const std::string& ActivityBluePrint::getName() const {
     return name;
 }
 
-const Colors& ActivityBluePrint::getColor() const {
-    return color;
-}
-
 const std::string& ActivityBluePrint::getTag() const {
     return tag;
 }
 
 const std::string& ActivityBluePrint::getDescription() const {
     return description;
-}
-
-void ActivityBluePrint::printActivities() {
-    for(const auto& i:activities){
-        std::cout << name << " ";
-        i.second->print();
-        std::cout << std::endl;
-    }
-
 }
 
 void ActivityBluePrint::addActivity(std::unique_ptr<Activity> entry) {

@@ -22,8 +22,6 @@ public:
     void notify() override;
     ~Category() override = default;
 
-
-    void print();
     void addActivity(std::unique_ptr<ActivityBluePrint>& a);
     void removeActivity(const std::string& name);
     bool checkForDoubleAct(const std::string& n) const;
@@ -34,7 +32,6 @@ public:
 
     //GETTER AND SETTER
     const std::string& getName() const;
-    void setName(const std::string& n);
     std::string getDescription(const std::string& act);
     std::string getTags(const std::string& act);
 

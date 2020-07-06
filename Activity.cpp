@@ -17,10 +17,6 @@ const QDateTime& Activity::getEndTime() const {
     return endTime;
 }
 
-void Activity::print() {
-    std::cout << startTime.toString("dd.MM.yyyy hh:mm").toStdString();
-}
-
 int Activity::getElapsed() const {
     return elapsed;
 }

@@ -10,6 +10,7 @@ MainWindow::MainWindow(ControllerMain* c, ModelMain* m, QWidget* parent) : contr
     model->addObserver(this);
     ui->setupUi(this);
     ui->dateLabel->setText(chart.getDate().toString("d/MM/yy"));
+    ui->graphicsView->hide();
 
     QObject::connect(ui->addCategoryButton, &QPushButton::clicked, this, &MainWindow::showCategoryAdder);
     QObject::connect(ui->removeCategoryButton, &QPushButton::clicked, this, &MainWindow::onRemoveCategoryButton);
@@ -26,7 +27,6 @@ MainWindow::MainWindow(ControllerMain* c, ModelMain* m, QWidget* parent) : contr
 }
 
 MainWindow::~MainWindow() {
-    saveSession();
     model->removeObserver(this);
     delete ui;
 }
@@ -112,10 +112,6 @@ void MainWindow::resetButtons() {
     ui->addActivityButton->setDisabled(ui->categoryListWidget->selectedItems().isEmpty());
     ui->removeActivityButton->setDisabled(ui->activityListWidget->selectedItems().isEmpty());
     ui->viewEntriesButton->setDisabled(ui->activityListWidget->selectedItems().isEmpty());
-}
-
-void MainWindow::saveSession() {
-    controller->saveSession();
 }
 
 void MainWindow::createChart() {

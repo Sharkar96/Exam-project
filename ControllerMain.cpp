@@ -52,10 +52,6 @@ void ControllerMain::addEntry(const std::string& cat, const std::string& act, QT
         throw std::invalid_argument("Start time can't be greater than Finish time");
 }
 
-void ControllerMain::saveSession() {
-    model->printCategories();
-}
-
 std::string ControllerMain::getDescription(const std::string& cat, const std::string& act) {
     return std::move(model->getDescription(cat, act));
 }

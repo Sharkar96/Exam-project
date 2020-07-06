@@ -16,8 +16,8 @@ find_package(Qt5Charts REQUIRED)
 
 
 #here goes all the source files except main.cpp
-set(SOURCE_FILES Category.cpp ActivityBluePrint.cpp Colors.cpp MainWindow.cpp CategoryAdderView.cpp ModelMain.cpp ControllerMain.cpp ActivityAdderView.cpp EntryAdderView.cpp Activity.cpp EntryViewerView.cpp Chart.cpp)
-set(HEADER_FILES Category.h ActivityBluePrint.h Colors.h Activity.h Ui_MainWindow.h MainWindow.h Ui_CategoryAdderView.h CategoryAdderView.h Subject.h ListObserverInterface.h ModelMain.h ControllerMain.h Ui_ActivityAdderView.h ActivityAdderView.h Ui_EntryAdderView.h EntryAdderView.h Ui_EntryViewer.h EntryViewerView.h ListObserverInterface.h Observer.h EntryObserverInterface.h ChartObserverInterface.h Chart.h)
+set(SOURCE_FILES Category.cpp ActivityBluePrint.cpp MainWindow.cpp CategoryAdderView.cpp ModelMain.cpp ControllerMain.cpp ActivityAdderView.cpp EntryAdderView.cpp Activity.cpp EntryViewerView.cpp Chart.cpp)
+set(HEADER_FILES Category.h ActivityBluePrint.h Activity.h Ui_MainWindow.h MainWindow.h Ui_CategoryAdderView.h CategoryAdderView.h Subject.h ListObserverInterface.h ModelMain.h ControllerMain.h Ui_ActivityAdderView.h ActivityAdderView.h Ui_EntryAdderView.h EntryAdderView.h Ui_EntryViewer.h EntryViewerView.h ListObserverInterface.h Observer.h EntryObserverInterface.h ChartObserverInterface.h Chart.h)
 
 
 #creates a library out of the remaining files

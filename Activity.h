@@ -15,7 +15,6 @@ public:
     };
 
     void setElapsed();
-    void print();
 
     //GETTER and SETTER
     const QDateTime& getStartTime() const;

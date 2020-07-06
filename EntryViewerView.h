@@ -18,6 +18,7 @@ public:
 
     void update(const std::unique_ptr<Activity>& a) override;
 
+    void tableInit();
     void addEntry(int e, const QDateTime& s, const QDateTime& f);
 private slots:
 

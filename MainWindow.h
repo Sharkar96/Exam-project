@@ -41,8 +41,6 @@ public:
     std::string getActivityName() const;
     void resetButtons();
 
-    void saveSession();
-
     void createChart();
 
     //GETTER and SETTER
@@ -53,6 +51,7 @@ private:
     ControllerMain* controller;
     ModelMain* model;
     Chart chart;
+
 private slots:
     void showCategoryAdder();
     void onRemoveCategoryButton();

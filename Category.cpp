@@ -9,17 +9,6 @@ const std::string& Category::getName() const {
     return name;
 }
 
-void Category::setName(const std::string& n) {
-    name = n;
-}
-
-void Category::print() {
-    std::cout << name << std::endl;
-    for(const auto& i:activities)
-        i->printActivities();
-
-}
-
 void Category::addActivity(std::unique_ptr<ActivityBluePrint>& a) {
     activities.push_back(std::move(a));
 }
