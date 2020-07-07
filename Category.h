@@ -5,13 +5,15 @@
 #ifndef EXAM_PROJECT_CATEGORY_H
 #define EXAM_PROJECT_CATEGORY_H
 
-#include "ActivityBluePrint.h"
-#include "Subject.h"
-#include "ListObserverInterface.h"
+
 #include <iostream>
 #include <list>
 #include <utility>
-#include <QTime>
+#include <QDateTime>
+#include "ActivityBluePrint.h"
+#include "Subject.h"
+#include "ListObserverInterface.h"
+
 
 class Category : public Subject {
 public:

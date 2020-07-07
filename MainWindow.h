@@ -6,9 +6,10 @@
 #define EXAM_PROJECT_MAINWINDOW_H
 
 
-#include <QMainWindow>
 #include "Ui_MainWindow.h"
 #include <iostream>
+#include <QMainWindow>
+#include <QtCharts>
 #include "CategoryAdderView.h"
 #include "ActivityAdderView.h"
 #include "Category.h"
@@ -17,8 +18,8 @@
 #include "ModelMain.h"
 #include "EntryAdderView.h"
 #include "EntryViewerView.h"
-#include "Chart.h"
-#include <QtCharts>
+
+
 
 //Registro di attività che memorizza cosa si è fatto durante una giornata.
 //Classe che rappresenta attività con descrizione, tempo inizio e fine, Classe registro che colleziona attività su base del giorno.
@@ -34,6 +35,10 @@ public:
     void update(Subject* s, const std::string& n) override;
     void clear() override;
 
+    void update() override;
+    void addSubject(Subject* s) override;
+    void removeSubject(Subject* s) override;
+
     void refreshActList();
     void updateActivityInfo();
 
@@ -45,12 +50,11 @@ public:
 
     //GETTER and SETTER
     ControllerMain* getController() const;
-    Chart* getChartAddress();
 private:
     Ui_MainWindow* ui;
     ControllerMain* controller;
     ModelMain* model;
-    Chart chart;
+    std::list<ActivityBluePrint*> subjects;
 
 private slots:
     void showCategoryAdder();

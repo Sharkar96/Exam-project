@@ -23,7 +23,7 @@ ActivityAdderView::~ActivityAdderView() {
 void ActivityAdderView::onAddActivity() {
     try {
         auto p = dynamic_cast<MainWindow*>(parent());
-        p->getController()->addActivity(categoryName, ui->nameLineEdit->text().toStdString(), p->getChartAddress(),
+        p->getController()->addActivity(categoryName, ui->nameLineEdit->text().toStdString(),
                                         ui->descriptionPlainTextEdit->toPlainText().toStdString(),
                                         ui->tagLineEdit->text().toStdString());
 

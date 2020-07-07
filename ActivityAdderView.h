@@ -6,7 +6,6 @@
 #define EXAM_PROJECT_ACTIVITYADDERVIEW_H
 
 #include <QtWidgets>
-#include "ControllerMain.h"
 #include "Ui_ActivityAdderView.h"
 #include "MainWindow.h"
 

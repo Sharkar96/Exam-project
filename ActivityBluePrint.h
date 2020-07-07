@@ -12,25 +12,22 @@
 #include "Activity.h"
 #include "Subject.h"
 #include "EntryObserverInterface.h"
-#include "ChartObserverInterface.h"
-#include "Chart.h"
+#include "ListObserverInterface.h"
 
-class Chart; //if this is removed Chart is not recognised for some reasons
 
-class ActivityBluePrint : public Subject, public ChartObserverInterface {
+class ActivityBluePrint : public Subject {
 public:
-    ActivityBluePrint(std::string n, std::string t, Chart* s, std::string d = "");
+    ActivityBluePrint(std::string n, std::string t, std::string d = "");
     virtual ~ActivityBluePrint();
 
     void addObserver(Observer* ob) override;
     void removeObserver(Observer* ob) override;
     void notify() override;
 
-    void update() override;
-
     void addActivity(std::unique_ptr<Activity> entry);
 
     int getTimeTracked(const QDate& d);
+
     ActivityBluePrint* getAddress();
 
     //GETTER AND SETTER
@@ -41,7 +38,6 @@ public:
 protected:
     std::string name{"default"};
     std::string tag; // productivity, waste of time, school related etc.
-    Chart* subject;
     std::string description;
     std::list<Observer*> observers;
     std::multimap<QDateTime, std::unique_ptr<Activity>> activities;

@@ -88,4 +88,10 @@ ActivityBluePrint* ModelMain::getAddress(const std::string& cat, const std::stri
     return (*getCategory(cat))->getAddress(act);
 }
 
+void ModelMain::setDate(const QDate& date) {
+    ModelMain::date = date;
+}
 
+const QDate& ModelMain::getDate() const {
+    return date;
+}

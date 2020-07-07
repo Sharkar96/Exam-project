@@ -15,6 +15,9 @@ public:
     virtual void update(Subject* s, const std::string& n) = 0;
     virtual void clear() = 0;
 
+    virtual void update() = 0;
+    virtual void addSubject(Subject* s) = 0;
+    virtual void removeSubject(Subject* s) = 0;
 
     virtual ~ListObserverInterface() = default;
 };

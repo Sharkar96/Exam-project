@@ -10,7 +10,7 @@
 #include <QDate>
 #include "Subject.h"
 #include "Category.h"
-#include"ListObserverInterface.h"
+#include "ListObserverInterface.h"
 
 class ModelMain : public Subject {
 public:
@@ -33,11 +33,14 @@ public:
     ActivityBluePrint* getAddress(const std::string& cat, const std::string& act);
 
     void addEntry(const std::string& cat, const std::string& act, std::unique_ptr<Activity> entry);
-
+    //GETTER and SETTER
+    void setDate(const QDate& date);
+    const QDate& getDate() const;
 private:
     std::list<std::unique_ptr<Category>>::iterator getCategory(const std::string& name);
     //^ suppose it exists
     std::list<Observer*> observers;
+    QDate date{QDate::currentDate()};
     std::list<std::unique_ptr<Category>> categories;
 };
 

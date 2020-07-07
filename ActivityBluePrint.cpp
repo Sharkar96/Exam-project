@@ -4,16 +4,16 @@
 
 #include "ActivityBluePrint.h"
 
-ActivityBluePrint::ActivityBluePrint(std::string n, std::string t, Chart* s, std::string d) : name{
-        std::move(n)},
-                                                                                              tag{std::move(
-                                                                                                      t)},
-                                                                                              subject{s},
-                                                                                              description{
-                                                                                                      std::move(
-                                                                                                              d)} {
 
-    subject->addObserver(this);
+ActivityBluePrint::ActivityBluePrint(std::string n, std::string t, std::string d) : name{
+        std::move(n)},
+                                                                                    tag{std::move(
+                                                                                            t)},
+                                                                                    description{
+                                                                                            std::move(
+                                                                                                    d)} {
+
+
 }
 
 const std::string& ActivityBluePrint::getName() const {
@@ -31,15 +31,23 @@ const std::string& ActivityBluePrint::getDescription() const {
 void ActivityBluePrint::addActivity(std::unique_ptr<Activity> entry) {
     auto key = QDateTime(entry->getStartTime());
     activities.emplace(key, std::move(entry));
-    update();
-
+    notify();
 }
 
 void ActivityBluePrint::addObserver(Observer* ob) {
     observers.push_back(ob);
+
+    auto p = dynamic_cast<ListObserverInterface*>(ob);
+    if(p) {
+        p->addSubject(this);
+        p->update();
+    }
 }
 
 void ActivityBluePrint::removeObserver(Observer* ob) {
+    auto p = dynamic_cast<ListObserverInterface*>(ob);
+    if(p)
+        p->removeSubject(this);
     observers.remove(ob);
 }
 
@@ -49,17 +57,14 @@ void ActivityBluePrint::notify() {
         if(p)
             for(const auto& j:activities)
                 p->update(j.second);
+        auto q = dynamic_cast<ListObserverInterface*>(i);
+        if(q)
+            q->update();
     }
 }
 
 ActivityBluePrint* ActivityBluePrint::getAddress() {
     return this;
-}
-
-void ActivityBluePrint::update() {
-    int time = getTimeTracked(subject->getDate());
-    subject->updateObData(this, name, time);
-    subject->setTotalTimeTracked(time);
 }
 
 int ActivityBluePrint::getTimeTracked(const QDate& d) {
@@ -71,7 +76,11 @@ int ActivityBluePrint::getTimeTracked(const QDate& d) {
 }
 
 ActivityBluePrint::~ActivityBluePrint() {
-    subject->setTotalTimeTracked(-getTimeTracked(subject->getDate()));
-    subject->removeObserver(this);
+    for(const auto& i:observers){
+        auto p = dynamic_cast<ListObserverInterface*>(i);
+        if(p)
+            p->removeSubject(this);
+    }
+
 }
 

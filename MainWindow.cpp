@@ -9,9 +9,11 @@ MainWindow::MainWindow(ControllerMain* c, ModelMain* m, QWidget* parent) : contr
                                                                            ui(new Ui_MainWindow()) {
     model->addObserver(this);
     ui->setupUi(this);
-    ui->dateLabel->setText(chart.getDate().toString("d/MM/yy"));
-    ui->graphicsView->hide();
 
+    ui->dateLabel->setText(model->getDate().toString("d/MM/yy"));
+
+    ui->graphicsView->hide();
+    controller->setMain(this);
     QObject::connect(ui->addCategoryButton, &QPushButton::clicked, this, &MainWindow::showCategoryAdder);
     QObject::connect(ui->removeCategoryButton, &QPushButton::clicked, this, &MainWindow::onRemoveCategoryButton);
     QObject::connect(ui->categoryListWidget, &QListWidget::clicked, this, &MainWindow::onCategoryPressed);
@@ -27,6 +29,9 @@ MainWindow::MainWindow(ControllerMain* c, ModelMain* m, QWidget* parent) : contr
 }
 
 MainWindow::~MainWindow() {
+    for(auto i = subjects.begin(); i != subjects.end();){
+        (*i++)->removeObserver(this);
+    }
     model->removeObserver(this);
     delete ui;
 }
@@ -91,6 +96,7 @@ void MainWindow::refreshActList() {
     }
     updateActivityInfo();
     resetButtons();
+    createChart();
 }
 
 void MainWindow::onActivityPressed() {
@@ -115,7 +121,7 @@ void MainWindow::resetButtons() {
 }
 
 void MainWindow::createChart() {
-    auto cha = chart.createChart();
+    auto cha = controller->createChart(subjects);
     if(cha) {
         ui->graphicsView->show();
         QChart::ChartTheme theme = QtCharts::QChart::ChartThemeDark;
@@ -140,14 +146,12 @@ void MainWindow::updateActivityInfo() {
 }
 
 void MainWindow::onIncreaseDateButton() {
-    chart.setDate(chart.getDate().addDays(1));
-    ui->dateLabel->setText(chart.getDate().toString("d/MM/yy"));
+    ui->dateLabel->setText(controller->increaseDate().toString("d/MM/yy"));
     createChart();
 }
 
 void MainWindow::onDecreaseDateButton() {
-    chart.setDate(chart.getDate().addDays(-1));
-    ui->dateLabel->setText(chart.getDate().toString("d/MM/yy"));
+    ui->dateLabel->setText(controller->decreaseDate().toString("d/MM/yy"));
     createChart();
 }
 
@@ -161,9 +165,23 @@ ControllerMain* MainWindow::getController() const {
     return controller;
 }
 
-Chart* MainWindow::getChartAddress() {
-    return &chart;
+void MainWindow::update() {
+
 }
+
+void MainWindow::addSubject(Subject* s) {
+    auto p = dynamic_cast<ActivityBluePrint*>(s);
+    if(p)
+        subjects.push_back(p);
+}
+
+void MainWindow::removeSubject(Subject* s) {
+    auto p = dynamic_cast<ActivityBluePrint*>(s);
+    if(p)
+        subjects.remove(p);
+}
+
+
 
 
 

@@ -1,5 +1,4 @@
 #include <QApplication>
-#include "CategoryAdderView.h"
 #include "MainWindow.h"
 #include "ModelMain.h"
 #include "ControllerMain.h"
