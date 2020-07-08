@@ -26,6 +26,8 @@ public:
 
     void addActivity(std::unique_ptr<ActivityBluePrint>& a);
     void removeActivity(const std::string& name);
+    void renameAct(const std::string& oldName, const std::string& newName); //Just for testing
+
     bool checkForDoubleAct(const std::string& n) const;
 
     ActivityBluePrint* getAddress(const std::string& act);
@@ -33,6 +35,7 @@ public:
     void addEntry(const std::string& act, std::unique_ptr<Activity> entry);
 
     //GETTER AND SETTER
+    void setName(const std::string& name);
     const std::string& getName() const;
     std::string getDescription(const std::string& act);
     std::string getTags(const std::string& act);

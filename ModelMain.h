@@ -24,6 +24,7 @@ public:
     void removeCategory(const std::string& name);
     bool checkForDoubleCat(const std::string& n) const;
     void notifyCategory(const std::string& n);
+    void renameCat(const std::string& oldName, const std::string& newName); //Just for Testing
 
     void addActivity(const std::string& catName, std::unique_ptr<ActivityBluePrint>& a);
     void removeActivity(const std::string& catName, const std::string& actName);

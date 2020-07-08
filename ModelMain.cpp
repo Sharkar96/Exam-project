@@ -95,3 +95,7 @@ void ModelMain::setDate(const QDate& date) {
 const QDate& ModelMain::getDate() const {
     return date;
 }
+
+void ModelMain::renameCat(const std::string& oldName, const std::string& newName) {
+    (*getCategory(oldName))->setName(newName);
+}

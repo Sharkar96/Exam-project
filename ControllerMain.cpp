@@ -99,7 +99,14 @@ QChart* ControllerMain::createChart(const std::list<ActivityBluePrint*>& subject
     if(totalTimeTracked != 0) {
         auto series = new QHorizontalStackedBarSeries();
         for(const auto& i: times){
-            auto barSet = new QBarSet(QString::fromStdString(i.first));
+            auto f = static_cast<float>(i.second) / 3600;
+
+            std::stringstream stream;
+            stream << std::fixed << std::setprecision(2) << f;
+            std::string s = stream.str();
+
+            auto barSet = new QBarSet(QString::fromStdString(
+                    i.first + " " + "(" + s + ")"));
             *barSet << (((static_cast<float>(i.second)) / totalTimeTracked) * 100);
             series->append(barSet);
         }

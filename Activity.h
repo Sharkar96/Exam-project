@@ -14,12 +14,12 @@ public:
         setElapsed();
     };
 
-    void setElapsed();
+    void setElapsed(); //in seconds
 
     //GETTER and SETTER
     const QDateTime& getStartTime() const;
     const QDateTime& getEndTime() const;
-    int getElapsed() const;
+    int getElapsed() const; //in seconds
 private:
     QDateTime startTime;
     QDateTime endTime;

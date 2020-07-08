@@ -6,6 +6,8 @@
 #define EXAM_PROJECT_CONTROLLERMAIN_H
 
 #include <string>
+#include <iomanip>
+#include <sstream>
 #include <QDateTime>
 #include "ModelMain.h"
 #include "Activity.h"
@@ -40,6 +42,7 @@ public:
 
     //GETTER an SETTER
     void setMain(Observer* main);
+
 private:
     Observer* main{nullptr};
     ModelMain* model;

@@ -71,5 +71,13 @@ ActivityBluePrint* Category::getAddress(const std::string& act) {
     return (*getActivity(act))->getAddress();
 }
 
+void Category::renameAct(const std::string& oldName, const std::string& newName) {
+    (*getActivity(oldName))->setName(newName);
+}
+
+void Category::setName(const std::string& name) {
+    Category::name = name;
+}
+
 
 

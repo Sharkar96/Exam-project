@@ -25,6 +25,7 @@ public:
     void notify() override;
 
     void addActivity(std::unique_ptr<Activity> entry);
+    void removeActivity(QDateTime start, QDateTime finish); //Just for testing
 
     int getTimeTracked(const QDate& d);
 
@@ -34,6 +35,9 @@ public:
     const std::string& getName() const;
     const std::string& getTag() const;
     const std::string& getDescription() const;
+    void setName(const std::string& name);
+    void setTag(const std::string& tag);
+    void setDescription(const std::string& description);
 
 protected:
     std::string name{"default"};

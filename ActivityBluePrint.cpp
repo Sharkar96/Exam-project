@@ -84,3 +84,25 @@ ActivityBluePrint::~ActivityBluePrint() {
 
 }
 
+void ActivityBluePrint::setName(const std::string& name) {
+    ActivityBluePrint::name = name;
+}
+
+void ActivityBluePrint::setTag(const std::string& tag) {
+    ActivityBluePrint::tag = tag;
+}
+
+void ActivityBluePrint::setDescription(const std::string& description) {
+    ActivityBluePrint::description = description;
+}
+
+void ActivityBluePrint::removeActivity(QDateTime start, QDateTime finish) {
+    for(auto i = activities.begin(); i != activities.end();){
+        if(i->second->getStartTime() == start && i->second->getEndTime() == finish)
+            i = activities.erase(i);
+        else
+            i++;
+    }
+
+}
+
