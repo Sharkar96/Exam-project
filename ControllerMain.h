@@ -32,6 +32,7 @@ public:
     ActivityBluePrint* getAddress(const std::string& cat, const std::string& act);
 
     void addEntry(const std::string& cat, const std::string& act, QTime start, QTime finish, QDate date);
+    void removeEntry(const std::string& cat, const std::string& act, const QDateTime& start, const QDateTime& finish);
 
     QChart* createChart(const std::list<ActivityBluePrint*>& subjects);
 

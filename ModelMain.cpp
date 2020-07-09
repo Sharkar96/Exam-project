@@ -99,3 +99,8 @@ const QDate& ModelMain::getDate() const {
 void ModelMain::renameCat(const std::string& oldName, const std::string& newName) {
     (*getCategory(oldName))->setName(newName);
 }
+
+void ModelMain::removeEntry(const std::string& cat, const std::string& act, const QDateTime& start,
+                            const QDateTime& finish) {
+    (*getCategory(cat))->removeEntry(act, start, finish);
+}

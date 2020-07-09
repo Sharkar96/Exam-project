@@ -166,7 +166,7 @@ ControllerMain* MainWindow::getController() const {
 }
 
 void MainWindow::update() {
-
+    createChart();
 }
 
 void MainWindow::addSubject(Subject* s) {

@@ -20,6 +20,9 @@ EntryViewerView::EntryViewerView(ControllerMain* c, std::string cat, std::string
     subject->addObserver(this);
     ui->setupUi(this);
 
+    QObject::connect(ui->removeEntryButton, &QPushButton::clicked, this, &EntryViewerView::onRemoveEntryButton);
+    QObject::connect(ui->tableWidget, &QTableWidget::clicked, this, &EntryViewerView::onEntryPressed);
+
     tableInit();
 
     ui->catLabel->setText(QString::fromStdString(category));
@@ -27,6 +30,7 @@ EntryViewerView::EntryViewerView(ControllerMain* c, std::string cat, std::string
 
     subject->notify();
 
+    resetButton();
 }
 
 EntryViewerView::~EntryViewerView() {
@@ -61,4 +65,31 @@ void EntryViewerView::tableInit() {
     ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+}
+
+void EntryViewerView::onRemoveEntryButton() {
+    int row = selectedRow();
+    QDateTime start = QDateTime::fromString(ui->tableWidget->item(row, 1)->text(),
+                                            "hh:mm dd/MM/yy");
+    QDateTime finish = QDateTime::fromString(ui->tableWidget->item(row, 2)->text(),
+                                             "hh:mm dd/MM/yy");
+
+    ui->tableWidget->clear();
+    rows = 0;
+
+    controller->removeEntry(category, activity, start, finish);
+    resetButton();
+}
+
+void EntryViewerView::resetButton() {
+    ui->removeEntryButton->setDisabled(ui->tableWidget->selectedItems().isEmpty());
+}
+
+void EntryViewerView::onEntryPressed() {
+    resetButton();
+}
+
+int EntryViewerView::selectedRow() {
+    QModelIndexList selection = ui->tableWidget->selectionModel()->selectedRows();
+    return selection.begin()->row();
 }

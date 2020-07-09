@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'MainWindowLWEGMy.ui'
+** Form generated from reading UI file 'MainWindowzxONZk.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.14.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef MAINWINDOWLWEGMY_H
-#define MAINWINDOWLWEGMY_H
+#ifndef MAINWINDOWZXONZK_H
+#define MAINWINDOWZXONZK_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -48,7 +48,7 @@ public:
     QLabel* description;
     QChartView* graphicsView;
     QPushButton* viewEntriesButton;
-    QWidget* widget;
+    QWidget* layoutWidget3;
     QHBoxLayout* horizontalLayout;
     QPushButton* dateDescreaseButton;
     QLabel* dateLabel;
@@ -133,27 +133,27 @@ public:
         description->setWordWrap(true);
         graphicsView = new QChartView(centralwidget);
         graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
-        graphicsView->setGeometry(QRect(320, 90, 371, 331));
+        graphicsView->setGeometry(QRect(280, 90, 451, 391));
         viewEntriesButton = new QPushButton(centralwidget);
         viewEntriesButton->setObjectName(QString::fromUtf8("viewEntriesButton"));
         viewEntriesButton->setGeometry(QRect(620, 520, 112, 32));
-        widget = new QWidget(centralwidget);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(410, 40, 176, 32));
-        horizontalLayout = new QHBoxLayout(widget);
+        layoutWidget3 = new QWidget(centralwidget);
+        layoutWidget3->setObjectName(QString::fromUtf8("layoutWidget3"));
+        layoutWidget3->setGeometry(QRect(410, 40, 176, 32));
+        horizontalLayout = new QHBoxLayout(layoutWidget3);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        dateDescreaseButton = new QPushButton(widget);
+        dateDescreaseButton = new QPushButton(layoutWidget3);
         dateDescreaseButton->setObjectName(QString::fromUtf8("dateDescreaseButton"));
 
         horizontalLayout->addWidget(dateDescreaseButton);
 
-        dateLabel = new QLabel(widget);
+        dateLabel = new QLabel(layoutWidget3);
         dateLabel->setObjectName(QString::fromUtf8("dateLabel"));
 
         horizontalLayout->addWidget(dateLabel);
 
-        dateIncreaseButton = new QPushButton(widget);
+        dateIncreaseButton = new QPushButton(layoutWidget3);
         dateIncreaseButton->setObjectName(QString::fromUtf8("dateIncreaseButton"));
 
         horizontalLayout->addWidget(dateIncreaseButton);
@@ -189,4 +189,4 @@ public:
 
 QT_END_NAMESPACE
 
-#endif // MAINWINDOWLWEGMY_H
+#endif // MAINWINDOWZXONZK_H

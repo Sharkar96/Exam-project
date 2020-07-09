@@ -25,7 +25,7 @@ public:
     void notify() override;
 
     void addActivity(std::unique_ptr<Activity> entry);
-    void removeActivity(QDateTime start, QDateTime finish); //Just for testing
+    void removeEntry(const QDateTime& start, const QDateTime& finish);
 
     int getTimeTracked(const QDate& d);
 

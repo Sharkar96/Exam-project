@@ -79,5 +79,9 @@ void Category::setName(const std::string& name) {
     Category::name = name;
 }
 
+void Category::removeEntry(const std::string& act, const QDateTime& start, const QDateTime& finish) {
+    (*getActivity(act))->removeEntry(start, finish);
+}
+
 
 

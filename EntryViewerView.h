@@ -20,8 +20,11 @@ public:
 
     void tableInit();
     void addEntry(int e, const QDateTime& s, const QDateTime& f);
+    void resetButton();
+    int selectedRow();
 private slots:
-
+    void onRemoveEntryButton();
+    void onEntryPressed();
 private:
     int rows{0};
     ControllerMain* controller;

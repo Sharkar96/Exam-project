@@ -96,11 +96,13 @@ void ActivityBluePrint::setDescription(const std::string& description) {
     ActivityBluePrint::description = description;
 }
 
-void ActivityBluePrint::removeActivity(QDateTime start, QDateTime finish) {
+void ActivityBluePrint::removeEntry(const QDateTime& start, const QDateTime& finish) {
     for(auto i = activities.begin(); i != activities.end();){
-        if(i->second->getStartTime() == start && i->second->getEndTime() == finish)
+        if(i->second->getStartTime().toString("hh:mm dd/MM/yy") == start.toString("hh:mm dd/MM/yy") &&
+           i->second->getEndTime().toString("hh:mm dd/MM/yy") == finish.toString("hh:mm dd/MM/yy")) {
             i = activities.erase(i);
-        else
+            notify();
+        } else
             i++;
     }
 

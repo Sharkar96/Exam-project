@@ -34,12 +34,11 @@ protected:
         QTime finish(11, 15);
         QDate date(2019, 6, 10);
 
-        a->removeActivity(QDateTime(date, start), QDateTime(date, finish));
+        a->removeEntry(QDateTime(date, start), QDateTime(date, finish));
 
     }
 
     virtual void TearDown() {
-
         delete a;
     }
 

@@ -34,6 +34,8 @@ public:
     ActivityBluePrint* getAddress(const std::string& cat, const std::string& act);
 
     void addEntry(const std::string& cat, const std::string& act, std::unique_ptr<Activity> entry);
+    void removeEntry(const std::string& cat, const std::string& act, const QDateTime& start, const QDateTime& finish);
+
     //GETTER and SETTER
     void setDate(const QDate& date);
     const QDate& getDate() const;

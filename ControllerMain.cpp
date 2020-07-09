@@ -129,3 +129,8 @@ void ControllerMain::setMain(Observer* main) {
     ControllerMain::main = main;
 }
 
+void ControllerMain::removeEntry(const std::string& cat, const std::string& act, const QDateTime& start,
+                                 const QDateTime& finish) {
+    model->removeEntry(cat, act, start, finish);
+}
+
