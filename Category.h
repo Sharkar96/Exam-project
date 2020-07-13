@@ -45,7 +45,8 @@ public:
     std::string getTags(const std::string& act);
 
 private:
-    std::list<ListObserverInterface*> observers;
+    std::list<ListObserverInterface*> listObservers;
+    std::list<EntryObserverInterface*> entryObservers;
     std::list<std::unique_ptr<ActivityBluePrint>>::iterator getActivity(const std::string& name);
     std::string name;
     std::list<std::unique_ptr<ActivityBluePrint>> activities;

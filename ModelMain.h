@@ -44,7 +44,8 @@ public:
 private:
     std::list<std::unique_ptr<Category>>::iterator getCategory(const std::string& name);
     //^ suppose it exists
-    std::list<ListObserverInterface*> observers;
+    std::list<ListObserverInterface*> listObservers;
+    std::list<EntryObserverInterface*> entryObserver;
     QDate date{QDate::currentDate()};
     std::list<std::unique_ptr<Category>> categories;
 };

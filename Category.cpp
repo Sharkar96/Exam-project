@@ -38,19 +38,17 @@ bool Category::checkForDoubleAct(const std::string& n) const {
 }
 
 void Category::addObserver(ListObserverInterface* ob) {
-    observers.push_back(ob);
+    listObservers.push_back(ob);
 }
 
 void Category::removeObserver(ListObserverInterface* ob) {
-    observers.remove(ob);
+    listObservers.remove(ob);
 }
 
 void Category::notify() {
-    for(auto i: observers)
+    for(auto i: listObservers)
         for(auto& j:activities)
             i->update(this, j->getName());
-
-
 }
 
 void Category::addEntry(const std::string& act, std::unique_ptr<Activity> entry) {
@@ -82,11 +80,11 @@ void Category::removeEntry(const std::string& act, const QDateTime& start, const
 }
 
 void Category::addObserver(EntryObserverInterface* ob) {
-
+    entryObservers.push_back(ob);
 }
 
 void Category::removeObserver(EntryObserverInterface* ob) {
-
+    entryObservers.remove(ob);
 }
 
 

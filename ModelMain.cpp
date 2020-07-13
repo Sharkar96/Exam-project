@@ -5,15 +5,15 @@
 #include "ModelMain.h"
 
 void ModelMain::addObserver(ListObserverInterface* ob) {
-    observers.emplace_back(ob);
+    listObservers.emplace_back(ob);
 }
 
 void ModelMain::removeObserver(ListObserverInterface* ob) {
-    observers.remove(ob);
+    listObservers.remove(ob);
 }
 
 void ModelMain::notify() {
-    for(auto i: observers){
+    for(auto i: listObservers){
         i->clear();
         for(auto& j:categories)
             i->update(this, j->getName());
@@ -104,9 +104,9 @@ void ModelMain::removeEntry(const std::string& cat, const std::string& act, cons
 }
 
 void ModelMain::addObserver(EntryObserverInterface* ob) {
-
+    entryObserver.push_back(ob);
 }
 
 void ModelMain::removeObserver(EntryObserverInterface* ob) {
-
+    entryObserver.remove(ob);
 }
