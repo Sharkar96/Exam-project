@@ -5,13 +5,18 @@
 #ifndef EXAM_PROJECT_SUBJECT_H
 #define EXAM_PROJECT_SUBJECT_H
 
-#include "Observer.h"
+
+#include "ListObserverInterface.h"
+#include "EntryObserverInterface.h"
 
 class Subject {
 public:
 
-    virtual void addObserver(Observer* ob) = 0;
-    virtual void removeObserver(Observer* ob) = 0;
+    virtual void addObserver(ListObserverInterface* ob) = 0;
+    virtual void removeObserver(ListObserverInterface* ob) = 0;
+    virtual void addObserver(EntryObserverInterface* ob) = 0;
+    virtual void removeObserver(EntryObserverInterface* ob) = 0;
+
     virtual void notify() = 0;
 
     virtual ~Subject() = default;

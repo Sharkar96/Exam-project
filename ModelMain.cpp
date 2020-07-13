@@ -4,22 +4,20 @@
 
 #include "ModelMain.h"
 
-void ModelMain::addObserver(Observer* ob) {
+void ModelMain::addObserver(ListObserverInterface* ob) {
     observers.emplace_back(ob);
 }
 
-void ModelMain::removeObserver(Observer* ob) {
+void ModelMain::removeObserver(ListObserverInterface* ob) {
     observers.remove(ob);
 }
 
 void ModelMain::notify() {
     for(auto i: observers){
-        auto p = dynamic_cast<ListObserverInterface*>(i);
-        if(p) {
-            p->clear();
-            for(auto& j:categories)
-                p->update(this, j->getName());
-        }
+        i->clear();
+        for(auto& j:categories)
+            i->update(this, j->getName());
+
     }
 }
 
@@ -103,4 +101,12 @@ void ModelMain::renameCat(const std::string& oldName, const std::string& newName
 void ModelMain::removeEntry(const std::string& cat, const std::string& act, const QDateTime& start,
                             const QDateTime& finish) {
     (*getCategory(cat))->removeEntry(act, start, finish);
+}
+
+void ModelMain::addObserver(EntryObserverInterface* ob) {
+
+}
+
+void ModelMain::removeObserver(EntryObserverInterface* ob) {
+
 }

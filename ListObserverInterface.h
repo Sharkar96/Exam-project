@@ -6,11 +6,11 @@
 #define EXAM_PROJECT_LISTOBSERVERINTERFACE_H
 
 #include "Subject.h"
-#include "Observer.h"
+
 
 class Subject;
 
-class ListObserverInterface : public Observer {
+class ListObserverInterface {
 public:
     virtual void update(Subject* s, const std::string& n) = 0;
     virtual void clear() = 0;

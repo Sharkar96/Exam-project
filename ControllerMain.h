@@ -42,10 +42,10 @@ public:
     QDate getDate() const;
 
     //GETTER an SETTER
-    void setMain(Observer* main);
+    void setMain(ListObserverInterface* main);
 
 private:
-    Observer* main{nullptr};
+    ListObserverInterface* main{nullptr};
     ModelMain* model;
 };
 

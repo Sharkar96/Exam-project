@@ -5,10 +5,11 @@
 #ifndef EXAM_PROJECT_ENTRYOBSERVERINTERFACE_H
 #define EXAM_PROJECT_ENTRYOBSERVERINTERFACE_H
 
-#include "Observer.h"
+class Activity;
 
-class EntryObserverInterface : public Observer {
+class EntryObserverInterface {
 public:
+    virtual ~EntryObserverInterface() = default;
     virtual void update(const std::unique_ptr<Activity>& a) = 0;
 };
 

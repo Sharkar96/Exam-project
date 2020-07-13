@@ -12,16 +12,19 @@
 #include <QDateTime>
 #include "ActivityBluePrint.h"
 #include "Subject.h"
-#include "ListObserverInterface.h"
+
 
 
 class Category : public Subject {
 public:
     explicit Category(std::string n) : name{std::move(n)} {};
 
-    void addObserver(Observer* ob) override;
-    void removeObserver(Observer* ob) override;
+    void addObserver(ListObserverInterface* ob) override;
+    void removeObserver(ListObserverInterface* ob) override;
+    void addObserver(EntryObserverInterface* ob) override;
+    void removeObserver(EntryObserverInterface* ob) override;
     void notify() override;
+
     ~Category() override = default;
 
     void addActivity(std::unique_ptr<ActivityBluePrint>& a);
@@ -42,7 +45,7 @@ public:
     std::string getTags(const std::string& act);
 
 private:
-    std::list<Observer*> observers;
+    std::list<ListObserverInterface*> observers;
     std::list<std::unique_ptr<ActivityBluePrint>>::iterator getActivity(const std::string& name);
     std::string name;
     std::list<std::unique_ptr<ActivityBluePrint>> activities;

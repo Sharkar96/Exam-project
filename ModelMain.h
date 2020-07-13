@@ -16,8 +16,10 @@ class ModelMain : public Subject {
 public:
     virtual ~ModelMain() = default;
 
-    void addObserver(Observer* ob) override;
-    void removeObserver(Observer* ob) override;
+    void addObserver(ListObserverInterface* ob) override;
+    void removeObserver(ListObserverInterface* ob) override;
+    void addObserver(EntryObserverInterface* ob) override;
+    void removeObserver(EntryObserverInterface* ob) override;
     void notify() override;
 
     void addCategory(std::unique_ptr<Category>& c);
@@ -42,7 +44,7 @@ public:
 private:
     std::list<std::unique_ptr<Category>>::iterator getCategory(const std::string& name);
     //^ suppose it exists
-    std::list<Observer*> observers;
+    std::list<ListObserverInterface*> observers;
     QDate date{QDate::currentDate()};
     std::list<std::unique_ptr<Category>> categories;
 };

@@ -16,7 +16,6 @@ protected:
     void SetUp() override {
         m = new ModelMain;
         c = new ControllerMain(m);
-
     }
 
     void addCategory() {

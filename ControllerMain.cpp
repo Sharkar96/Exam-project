@@ -125,7 +125,7 @@ QChart* ControllerMain::createChart(const std::list<ActivityBluePrint*>& subject
     return nullptr;
 }
 
-void ControllerMain::setMain(Observer* main) {
+void ControllerMain::setMain(ListObserverInterface* main) {
     ControllerMain::main = main;
 }
 

@@ -20,8 +20,10 @@ public:
     ActivityBluePrint(std::string n, std::string t, std::string d = "");
     virtual ~ActivityBluePrint();
 
-    void addObserver(Observer* ob) override;
-    void removeObserver(Observer* ob) override;
+    void addObserver(ListObserverInterface* ob) override;
+    void removeObserver(ListObserverInterface* ob) override;
+    void addObserver(EntryObserverInterface* ob) override;
+    void removeObserver(EntryObserverInterface* ob) override;
     void notify() override;
 
     void addActivity(std::unique_ptr<Activity> entry);
@@ -43,7 +45,8 @@ protected:
     std::string name{"default"};
     std::string tag; // productivity, waste of time, school related etc.
     std::string description;
-    std::list<Observer*> observers;
+    std::list<EntryObserverInterface*> entryObservers;
+    std::list<ListObserverInterface*> listObservers;
     std::multimap<QDateTime, std::unique_ptr<Activity>> activities;
 };
 

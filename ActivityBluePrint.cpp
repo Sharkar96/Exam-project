@@ -34,33 +34,27 @@ void ActivityBluePrint::addActivity(std::unique_ptr<Activity> entry) {
     notify();
 }
 
-void ActivityBluePrint::addObserver(Observer* ob) {
-    observers.push_back(ob);
+void ActivityBluePrint::addObserver(ListObserverInterface* ob) {
+    listObservers.push_back(ob);
 
-    auto p = dynamic_cast<ListObserverInterface*>(ob);
-    if(p) {
-        p->addSubject(this);
-        p->update();
-    }
+    ob->addSubject(this);
+    ob->update();
+
 }
 
-void ActivityBluePrint::removeObserver(Observer* ob) {
-    auto p = dynamic_cast<ListObserverInterface*>(ob);
-    if(p)
-        p->removeSubject(this);
-    observers.remove(ob);
+void ActivityBluePrint::removeObserver(ListObserverInterface* ob) {
+    ob->removeSubject(this);
+    listObservers.remove(ob);
 }
 
 void ActivityBluePrint::notify() {
-    for(const auto& i:observers){
-        auto p = dynamic_cast<EntryObserverInterface*>(i);
-        if(p)
-            for(const auto& j:activities)
-                p->update(j.second);
-        auto q = dynamic_cast<ListObserverInterface*>(i);
-        if(q)
-            q->update();
-    }
+    for(const auto& i:entryObservers)
+        for(const auto& j:activities)
+            i->update(j.second);
+
+    for(const auto& i:listObservers)
+        i->update();
+
 }
 
 ActivityBluePrint* ActivityBluePrint::getAddress() {
@@ -76,11 +70,8 @@ int ActivityBluePrint::getTimeTracked(const QDate& d) {
 }
 
 ActivityBluePrint::~ActivityBluePrint() {
-    for(const auto& i:observers){
-        auto p = dynamic_cast<ListObserverInterface*>(i);
-        if(p)
-            p->removeSubject(this);
-    }
+    for(const auto& i:listObservers)
+        i->removeSubject(this);
 
 }
 
@@ -106,5 +97,13 @@ void ActivityBluePrint::removeEntry(const QDateTime& start, const QDateTime& fin
             i++;
     }
 
+}
+
+void ActivityBluePrint::addObserver(EntryObserverInterface* ob) {
+    entryObservers.push_back(ob);
+}
+
+void ActivityBluePrint::removeObserver(EntryObserverInterface* ob) {
+    entryObservers.remove(ob);
 }
 
